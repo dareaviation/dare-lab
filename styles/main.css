@@ -421,6 +421,71 @@ a:hover {
     gap: var(--grid-gap);
 }
 
+/* Latest updates: three fixed cards with edge navigation */
+.updates-slider {
+    position: relative;
+}
+
+.updates-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--grid-gap);
+}
+
+.updates-arrow {
+    width: 2.6rem;
+    height: 2.6rem;
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    transform: translateY(-50%);
+    border: 1px solid var(--border-strong);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--text);
+    font: inherit;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.updates-arrow:hover,
+.updates-arrow:focus-visible {
+    background: var(--brand-muted);
+    border-color: var(--accent);
+    outline: none;
+}
+
+.updates-arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+    border-color: var(--border);
+}
+
+.updates-arrow-previous {
+    left: -1.3rem;
+}
+
+.updates-arrow-next {
+    right: -1.3rem;
+}
+
+.updates-post-card {
+    width: 100%;
+    min-width: 0;
+    min-height: 550px;
+}
+
+.updates-post-card iframe {
+    width: 100%;
+    max-width: 100%;
+}
+
+.updates-post-card[hidden] {
+    display: none !important;
+}
+
 .grid-4 {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -670,6 +735,10 @@ section {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .updates-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .grid-4 {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -724,6 +793,18 @@ section {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
+    }
+
+    .updates-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .updates-arrow-previous {
+        left: -0.75rem;
+    }
+
+    .updates-arrow-next {
+        right: -0.75rem;
     }
 
     /* Grid layouts */

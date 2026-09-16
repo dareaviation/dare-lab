@@ -54,6 +54,47 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Latest updates: show a fixed grid and page through the remaining posts.
+    const updateCards = Array.from(document.querySelectorAll('[data-update-card]'));
+    const updateButtons = Array.from(document.querySelectorAll('[data-updates-direction]'));
+    if (updateCards.length && updateButtons.length) {
+        let updateStart = 0;
+
+        const visibleUpdateCount = () => {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        };
+
+        const renderUpdates = () => {
+            const visibleCount = visibleUpdateCount();
+            const maxStart = Math.max(0, updateCards.length - visibleCount);
+            updateStart = Math.min(updateStart, maxStart);
+
+            updateCards.forEach((card, index) => {
+                const visible = index >= updateStart && index < updateStart + visibleCount;
+                card.hidden = !visible;
+                card.setAttribute('aria-hidden', String(!visible));
+            });
+
+            updateButtons.forEach(button => {
+                const previous = button.dataset.updatesDirection === 'previous';
+                button.disabled = previous ? updateStart === 0 : updateStart === maxStart;
+            });
+        };
+
+        updateButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const direction = button.dataset.updatesDirection === 'next' ? 1 : -1;
+                updateStart += direction;
+                renderUpdates();
+            });
+        });
+
+        window.addEventListener('resize', renderUpdates);
+        renderUpdates();
+    }
+
     // Form Handling (Demo)
     window.fakeSubmit = (e) => {
         e.preventDefault();
