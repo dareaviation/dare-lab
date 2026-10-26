@@ -1,569 +1,1002 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <!--
-    DARE Lab — Decentralized Aviation Research & Education Lab
-    Production-ready landing site
-  -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#0b1220" />
-
-    <title>DARE Lab — Decentralized Aviation Research & Education Lab</title>
+      DARE Lab — Decentralized Aviation Research & Education Lab
+      Static site (GitHub Pages). Styles: styles/main.css · Scripts: js/main.js, js/globe.js
+    -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DARE Lab — Decentralized Aviation Research &amp; Education Lab</title>
     <meta name="description"
-        content="DARE Lab is a global, decentralized non-profit network of aviation researchers focused on high-quality publications, competitive projects, and continuous education." />
+        content="DARE Lab is a global, decentralized non-profit network of aviation researchers focused on high-quality publications, competitive projects, and continuous education.">
+    <meta name="theme-color" content="#060910">
+    <meta name="color-scheme" content="dark light">
+    <link rel="canonical" href="https://dareaviation.github.io/dare-lab/">
+
+    <!-- Icons -->
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="DARE Lab — Decentralized Aviation Research & Education Lab" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="DARE Lab">
+    <meta property="og:title" content="DARE Lab — Decentralized Aviation Research &amp; Education Lab">
     <meta property="og:description"
-        content="A global, decentralized non-profit network of aviation researchers advancing air transport, ATM, airport operations, safety, and sustainability through open, collaborative research." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://dare-lab.org/" />
-    <!-- Replace with your social preview image -->
-    <meta property="og:image" content="assets/og-dare.png" />
+        content="A global, decentralized non-profit network of aviation researchers advancing air transport, ATM, airport operations, safety, and sustainability through open, collaborative research.">
+    <meta property="og:url" content="https://dareaviation.github.io/dare-lab/">
+    <meta property="og:image" content="https://dareaviation.github.io/dare-lab/assets/og-dare.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="DARE Lab — dotted globe showing the lab's member network">
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DARE Lab — Decentralized Aviation Research & Education Lab" />
-    <meta name="twitter:description"
-        content="Global, decentralized non-profit aviation research + education network." />
-    <meta name="twitter:image" content="assets/og-dare.png" />
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DARE Lab — Decentralized Aviation Research &amp; Education Lab">
+    <meta name="twitter:description" content="Global, decentralized non-profit aviation research + education network.">
+    <meta name="twitter:image" content="https://dareaviation.github.io/dare-lab/assets/og-dare.jpg">
+
+    <!-- Apply the saved theme before first paint (prevents a flash) -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            d.classList.add('js');
+            try { var t = localStorage.getItem('dare_theme'); if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t); } catch (e) { }
+        })();
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
 
     <!-- Structured data -->
     <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ResearchOrganization",
-    "name": "DARE Lab",
-    "alternateName": "Decentralized Aviation Research & Education Lab",
-    "url": "https://dare-lab.org/",
-    "description": "DARE Lab is a global, decentralized non-profit network of aviation researchers focused on high-quality publications, competitive projects, and continuous education.",
-    "knowsAbout": [
-      "Air Transport", "Air Traffic Management", "Airport Operations", "Safety & Human Factors", "Sustainability", "Operations Research", "Machine Learning", "Digital Twins"
-    ],
-    "sameAs": [
-      "https://www.linkedin.com/company/dare-lab/",
-      "https://github.com/dare-lab"
-    ]
-  }
-  </script>
-
-    <!-- External Styles -->
-    <link rel="stylesheet" href="styles/main.css">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchOrganization",
+      "name": "DARE Lab",
+      "alternateName": "Decentralized Aviation Research & Education Lab",
+      "url": "https://dareaviation.github.io/dare-lab/",
+      "logo": "https://dareaviation.github.io/dare-lab/assets/apple-touch-icon.png",
+      "email": "dare.aviation@gmail.com",
+      "description": "DARE Lab is a global, decentralized non-profit network of aviation researchers focused on high-quality publications, competitive projects, and continuous education.",
+      "knowsAbout": [
+        "Air Transport", "Air Traffic Management", "Airport Operations", "Safety & Human Factors", "Sustainability", "Operations Research", "Machine Learning", "Digital Twins"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/decentralized-aviation-research-education-lab",
+        "https://github.com/dareaviation"
+      ]
+    }
+    </script>
 </head>
 
-<body data-theme="dark">
-    <!-- Header / Nav Pill -->
-    <header class="header">
-        <nav class="nav-pill">
-            <a class="brand" href="#top">
-                <span>DARE LAB</span>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- ================================================================
+         Icon sprite — reference with <svg class="icon"><use href="#i-name"/></svg>
+         ================================================================ -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+        <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+        <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+        <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 13.2A8.5 8.5 0 1 1 10.8 3.5a6.6 6.6 0 0 0 9.7 9.7z"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol>
+        <symbol id="i-scholar" viewBox="0 0 24 24"><path d="M2 9.5 12 5l10 4.5L12 14 2 9.5z"/><path d="M6 11.6V16c1.8 1.6 3.8 2.3 6 2.3s4.2-.7 6-2.3v-4.4M22 9.5v5"/></symbol>
+        <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></symbol>
+        <symbol id="i-network" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2.2"/><circle cx="19" cy="6" r="2.2"/><circle cx="12" cy="18.5" r="2.2"/><path d="M7.2 6h9.6M6.1 8l4.7 8.5M17.9 8l-4.7 8.5"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8.3 7.5 9.5 4.4-1.2 7.5-4.9 7.5-9.5V6L12 3z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/></symbol>
+        <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8"/></symbol>
+        <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12 18.4 5.6"/><circle cx="15.6" cy="9.2" r="1.1" fill="currentColor" stroke="none"/></symbol>
+        <symbol id="i-runway" viewBox="0 0 24 24"><path d="M8.5 21 10 3M15.5 21 14 3M12 5.5v2M12 10.5v2M12 15.5v2.5"/></symbol>
+        <symbol id="i-safety" viewBox="0 0 24 24"><circle cx="10" cy="7.5" r="3.5"/><path d="M3.5 20c.7-3.6 3.2-6 6.5-6 1.6 0 3 .5 4.1 1.5M15.5 18.5l2 2 4-4.5"/></symbol>
+        <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M4.5 19.5C4.5 10.6 10.4 4.5 20 4.5c0 9.5-6.1 15.5-15 15.5"/><path d="M4.5 19.5c3-4.3 6.3-7.4 10-9.5"/></symbol>
+        <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2.5"/><rect x="9.5" y="9.5" width="5" height="5" rx="1"/><path d="M9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/></symbol>
+        <symbol id="i-book-open" viewBox="0 0 24 24"><path d="M2.5 5.5h6A3.5 3.5 0 0 1 12 9v11a2.5 2.5 0 0 0-2.5-2.5h-7z"/><path d="M21.5 5.5h-6A3.5 3.5 0 0 0 12 9v11a2.5 2.5 0 0 1 2.5-2.5h7z"/></symbol>
+        <symbol id="i-drone" viewBox="0 0 24 24"><circle cx="5.5" cy="5.5" r="2.5"/><circle cx="18.5" cy="5.5" r="2.5"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/><path d="m7.6 7.6 2.4 2.4M16.4 7.6 14 10M7.6 16.4l2.4-2.4M16.4 16.4 14 14"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.2"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+        <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9.5 3h5M10.5 3v6.2L5.3 18a2 2 0 0 0 1.7 3h10a2 2 0 0 0 1.7-3l-5.2-8.8V3M7.5 15h9"/></symbol>
+        <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5"/><path d="M5 4.5v15A1.5 1.5 0 0 0 6.5 21H19M9 7.5h6"/></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="12" height="12" rx="2.5"/><path d="M15.5 8.5V6A2.5 2.5 0 0 0 13 3.5H6A2.5 2.5 0 0 0 3.5 6v7A2.5 2.5 0 0 0 6 15.5h2.5"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+        <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.2 12.3 2.6 2.6 5-5.4"/></symbol>
+        <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17v3z"/><path d="m14.5 7.5 2 2"/></symbol>
+        <symbol id="i-video" viewBox="0 0 24 24"><rect x="2.5" y="6" width="13" height="12" rx="2.5"/><path d="m15.5 10.5 6-3.5v10l-6-3.5"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M2.8 20c.6-3.5 3.1-5.7 6.2-5.7s5.6 2.2 6.2 5.7M16 4.9a3.2 3.2 0 0 1 0 6.2M18.2 14.6c1.6.8 2.7 2.7 3 5.4"/></symbol>
+        <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M4 7h16"/><path d="m6.5 7-3 6.5a3.2 3.2 0 0 0 6 0zM17.5 7l-3 6.5a3.2 3.2 0 0 0 6 0z"/></symbol>
+        <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 13.9 7 22l5-3 5 3-1.5-8.1"/></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3.5 2.5 20h19z"/><path d="M12 10v4.5M12 17.5h.01"/></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4.5" y="10.5" width="15" height="10.5" rx="2.5"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    </svg>
+
+    <!-- ================================================================
+         Header
+         ================================================================ -->
+    <header class="site-header" id="siteHeader">
+        <nav class="nav" aria-label="Primary">
+            <a class="brand" href="#top" aria-label="DARE Lab — back to top">
+                <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="markGradNav" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" stop-color="#3b82f6" />
+                            <stop offset="1" stop-color="#4fd1e8" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="0.5" y="0.5" width="31" height="31" rx="9" fill="#0b1324" stroke="rgba(255,255,255,0.14)" />
+                    <circle cx="16" cy="16.5" r="8.2" fill="none" stroke="url(#markGradNav)" stroke-width="1.8" />
+                    <path d="M6.3 22.2C9.6 14 17 9.4 25 10.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" />
+                    <circle cx="25" cy="10.6" r="2.3" fill="#fff" />
+                </svg>
+                <span class="brand__word">DARE<span>LAB</span></span>
             </a>
-            <div class="menu">
+
+            <div class="nav__links">
                 <a href="#about">About</a>
                 <a href="#structure">Structure</a>
                 <a href="#working-groups">Working Groups</a>
                 <a href="#outputs">Outputs</a>
                 <a href="#updates">Updates</a>
             </div>
-            <a class="btn primary" href="#join">Join</a>
-            <button id="themeBtn" class="btn-theme" aria-label="Toggle theme">Theme</button>
-            <button id="menuBtn" class="menu-btn" aria-label="Open menu">☰</button>
+
+            <div class="nav__actions">
+                <button class="icon-btn theme-toggle" id="themeBtn" type="button" aria-label="Switch between dark and light theme">
+                    <svg class="icon icon--moon"><use href="#i-moon" /></svg>
+                    <svg class="icon icon--sun"><use href="#i-sun" /></svg>
+                </button>
+                <a class="btn btn--primary btn--sm nav__cta" href="#join">Join the Lab</a>
+                <button class="icon-btn menu-toggle" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span></span>
+                </button>
+            </div>
         </nav>
     </header>
 
-    <!-- Mobile Drawer -->
-    <div id="drawer" class="drawer">
-        <button id="closeDrawer" class="menu-btn drawer-close" aria-label="Close menu">✕</button>
-        <div class="menu">
-            <a href="#about">About</a>
-            <a href="#structure">Structure</a>
-            <a href="#working-groups">Working Groups</a>
-            <a href="#outputs">Outputs</a>
-            <a href="#updates">Updates</a>
-            <a href="#protocol">Protocol</a>
-            <a href="#join">Join</a>
+    <!-- Mobile drawer -->
+    <div class="drawer" id="drawer">
+        <nav class="drawer__nav" aria-label="Mobile">
+            <a href="#about"><span>01</span>About</a>
+            <a href="#structure"><span>02</span>Structure</a>
+            <a href="#working-groups"><span>03</span>Working Groups</a>
+            <a href="#outputs"><span>04</span>Outputs</a>
+            <a href="#updates"><span>05</span>Updates</a>
+            <a href="#protocol"><span>07</span>Protocol</a>
+            <a href="#join"><span>08</span>Join</a>
+        </nav>
+        <div class="drawer__foot">
+            <a href="mailto:dare.aviation@gmail.com"><svg class="icon icon--sm"><use href="#i-mail" /></svg>dare.aviation@gmail.com</a>
+            <a href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-linkedin" /></svg>LinkedIn</a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <main id="top" class="hero">
-        <div class="container">
-            <h1 class="reveal" style="animation-delay: 0.1s">Decentralized <i>Aviation</i> <br> Research & Education
-                Lab.</h1>
-            <p class="reveal" style="animation-delay: 0.2s">
-                DARE Lab is a global, decentralized non-profit community of ambitious young and high-caliber researchers
-                dedicated to
-                top-quality scientific outputs across the aviation ecosystem.
-            </p>
-            <div class="reveal" style="animation-delay: 0.3s; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a class="btn primary hero-btn" href="#about">Explore the Laboratory</a>
-                <a class="btn hero-btn" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" style="background: transparent; border: 1px solid var(--border); color: var(--text); display: flex; align-items: center; gap: 0.5rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    Follow on LinkedIn
-                </a>
-            </div>
-        </div>
-    </main>
+    <main id="main">
 
-    <!-- Bento Section (About + Mission) -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>The Laboratory</h2>
-                <div class="label">Scientific Governance</div>
-            </div>
+        <!-- ================================================================
+             Hero
+             ================================================================ -->
+        <section class="hero" id="top">
+            <div class="hero__bg" aria-hidden="true"></div>
+            <div class="container hero__grid">
+                <div class="hero__copy">
+                    <a class="hero-badge" href="#outputs" data-reveal>
+                        <span class="hero-badge__tag">New</span>
+                        <span class="hero-badge__text">Paper in Transportation Research Part C</span>
+                        <svg class="icon"><use href="#i-arrow-right" /></svg>
+                    </a>
 
-            <div class="bento-grid">
-                <div id="mission" class="bento-card card-large">
-                    <span class="label">Official Description</span>
-                    <h3>High-Caliber <i>Ambition</i></h3>
-                    <p>DARE Lab is a global, decentralized non-profit community of ambitious young and high-caliber
-                        aviation
-                        researchers dedicated to producing top-quality scientific outputs across the aviation
-                        ecosystem—spanning air transport, ATM, airport operations, safety, and sustainability.</p>
-                    <p class="divider-top">We empower
-                        early-career talent alongside established experts, sharing datasets, simulation environments,
-                        and domain expertise globally.</p>
-                </div>
+                    <h1 class="hero__title" data-reveal>Decentralized <em>Aviation</em> Research &amp; Education Lab.</h1>
 
-                <div class="bento-card">
-                    <span class="label">Network Model</span>
-                    <h3>Decentralized.</h3>
-                    <p>Designed for flexibility and scale. Topic-driven working groups enable cross-pollination between
-                        teams and faster translation of ideas into publications.</p>
-                </div>
+                    <p class="hero__lede" data-reveal>
+                        DARE Lab is a global, decentralized non-profit community of ambitious young and high-caliber
+                        researchers dedicated to top-quality scientific outputs across the aviation ecosystem.
+                    </p>
 
-                <div class="bento-card">
-                    <span class="label">Priority</span>
-                    <h3>Quality-First.</h3>
-                    <p>Rigorous standards in research design, methodological transparency, and reproducibility aiming
-                        for high-impact scholarly assets.</p>
-                </div>
-
-                <div class="bento-card card-medium card-accent">
-                    <span class="label">Roadmap</span>
-                    <h3>Building an international footprint.</h3>
-                    <p>Focusing on regular webinars, focused
-                        workshops, and producing edited volumes that set new directions for the aviation research
-                        community.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Structure & Leadership -->
-    <section id="structure">
-        <div class="container">
-            <div class="section-title">
-                <h2>Laboratory Structure</h2>
-                <div class="label">Founders & PIs</div>
-            </div>
-
-            <div class="grid-2">
-                <!-- Kadir Dönmez -->
-                <div class="bento-card">
-                    <div class="profile">
-                        <img src="photos/kadir.jpg" class="profile-img" alt="Kadir Dönmez">
-                        <div class="profile-info">
-                            <span class="responsibility-tag">Education & Community</span>
-                            <span class="role">Founder & Co-Director</span>
-                            <span class="institution">Samsun University</span>
-                            <h3>Kadir Dönmez</h3>
-                            <p>Assoc. Prof. // Vice Dean at Faculty of Aeronautics and
-                                Astronautics. ATM researcher.</p>
-                            <a href="https://scholar.google.com/citations?user=vpywJdsAAAAJ" class="scholar-link"
-                                target="_blank">Google Scholar</a>
-                        </div>
+                    <div class="hero__actions" data-reveal>
+                        <a class="btn btn--primary" href="#about">
+                            Explore the Laboratory
+                            <svg class="icon icon--arrow"><use href="#i-arrow-right" /></svg>
+                        </a>
+                        <a class="btn btn--ghost" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener">
+                            <svg class="icon"><use href="#i-linkedin" /></svg>
+                            Follow on LinkedIn
+                        </a>
                     </div>
+
+                    <!-- Update these numbers when the team changes -->
+                    <dl class="hero__stats" data-reveal>
+                        <div class="stat"><dt class="stat__label">Researchers</dt><dd class="stat__value" data-count="10">10</dd></div>
+                        <div class="stat"><dt class="stat__label">Universities</dt><dd class="stat__value" data-count="7">7</dd></div>
+                        <div class="stat"><dt class="stat__label">Countries</dt><dd class="stat__value" data-count="3">3</dd></div>
+                        <div class="stat"><dt class="stat__label">Working groups</dt><dd class="stat__value" data-count="7">7</dd></div>
+                    </dl>
                 </div>
-                <!-- Hasnain Ali -->
-                <div class="bento-card">
-                    <div class="profile">
-                        <img src="photos/hasnain.jpg" class="profile-img" alt="Hasnain Ali">
-                        <div class="profile-info">
-                            <span class="responsibility-tag">Quality & Strategy</span>
-                            <span class="role">Co-Founder & Co-Director</span>
-                            <h3>Hasnain Ali</h3>
-                            <p>Lead – Data Science & Optimization | Machine Learning + Operations
-                                Research | Building Next-Gen Decision Systems.</p>
-                            <a href="https://scholar.google.com/citations?user=7gkNRBYAAAAJ" class="scholar-link"
-                                target="_blank">Google Scholar</a>
-                        </div>
+
+                <div class="hero__visual">
+                    <div class="globe">
+                        <canvas class="globe__canvas" data-globe role="img"
+                            aria-label="Rotating globe showing DARE Lab member locations — Samsun, Eskişehir, Elazığ and Erzincan in Türkiye, Tokyo in Japan, and Pueblo in the United States — connected by research links."></canvas>
+                        <p class="globe__caption"><span class="live-dot" aria-hidden="true"></span>Member network · IATA codes · drag to rotate</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="grid-3 section-spacing-sm">
-                <!-- Mustafa Özdemir -->
-                <div class="bento-card profile-compact">
-                    <img src="photos/mustafa.jpg" class="profile-img profile-img-sm" alt="Mustafa Özdemir">
-                    <span class="role">Principal Investigator</span>
-                    <span class="institution">The University of Tokyo</span>
-                    <h3 class="heading-compact">Mustafa Özdemir</h3>
-                    <p class="text-compact">Postdoctoral Researcher | PhD in ATM | Fulbright Alumnus.</p>
-                    <a href="https://scholar.google.dk/citations?user=NxffrX8AAAAJ" class="scholar-link"
-                        target="_blank">Google Scholar</a>
-                </div>
-                <!-- Mahmut Bakır -->
-                <div class="bento-card profile-compact">
-                    <img src="photos/mahmut.jpg" class="profile-img profile-img-sm" alt="Mahmut Bakır">
-                    <span class="role">Principal Investigator</span>
-                    <span class="institution">Samsun University</span>
-                    <h3 class="heading-compact">Mahmut Bakır</h3>
-                    <p class="text-compact">Assoc. Prof. // Head of Aviation Management Department.</p>
-                    <a href="https://scholar.google.com/citations?user=OSSfn5wAAAAJ" class="scholar-link"
-                        target="_blank">Google Scholar</a>
-                </div>
-                <!-- Saqib Gulzar -->
-                <div class="bento-card profile-compact">
-                    <img src="photos/saqib.jpg" class="profile-img profile-img-sm" alt="Saqib Gulzar">
-                    <span class="role">Principal Investigator</span>
-                    <span class="institution">Colorado State University Pueblo</span>
-                    <h3 class="heading-compact">Saqib Gulzar</h3>
-                    <p class="text-compact">Assistant Professor. Lead on Decision Support.</p>
-                    <a href="https://scholar.google.com/citations?user=DsVrc_EAAAAJ" class="scholar-link"
-                        target="_blank">Google Scholar</a>
-                </div>
-            </div>
-
-            <div class="grid-4 section-spacing-sm">
-                <!-- Mohammad Rauf Sheikhi -->
-                <div class="bento-card profile-compact">
-                    <img src="photos/rauf.jpg" class="profile-img profile-img-sm" alt="Mohammad Rauf Sheikhi">
-                    <span class="role">Principal Investigator</span>
-                    <span class="institution">Samsun University</span>
-                    <h3 class="heading-compact">Mohammad Rauf Sheikhi</h3>
-                    <p class="text-compact">Assistant Professor at Faculty of Aeronautics and Astronautics.</p>
-                    <a href="https://scholar.google.com/citations?user=1-56V6QAAAAJ" class="scholar-link"
-                        target="_blank">Google Scholar</a>
-                </div>
-                <!-- Hakan Aygün -->
-                <div class="bento-card profile-compact">
-                    <img src="photos/hakan.jpg" class="profile-img profile-img-sm" alt="Hakan Aygün">
-                    <span class="role">Principal Investigator</span>
-                    <span class="institution">Fırat University</span>
-                    <h3 class="heading-compact">Hakan Aygün</h3>
-                    <p class="text-compact">Assoc. Prof. // Energy-exergy, aviation fuels, emissions research.</p>
-                    <a href="https://scholar.google.com/citations?user=H0JvFHQAAAAJ" class="scholar-link"
-                        target="_blank">Google Scholar</a>
-                </div>
-                <!-- Gökhan Tanrıverdi -->
-                <div class="bento-card profile-compact">
-                    <img src="photos/gokhan.jpg" class="profile-img profile-img-sm" alt="Gökhan Tanrıverdi">
-                    <span class="role">Principal Investigator</span>
-                    <span class="institution">Erzincan Binali Yıldırım University</span>
-                    <h3 class="heading-compact">Gökhan Tanrıverdi</h3>
-                    <p class="text-compact">Assoc. Prof. // Aviation Management, Air Cargo, Strategic Decision-Making, Decarbonization.</p>
-                    <a href="https://scholar.google.com/citations?user=bZnDdcgAAAAJ&hl=tr" class="scholar-link"
-                        target="_blank">Google Scholar</a>
-                </div>
-                <!-- Ramazan Kürşat Çeçen -->
-                <div class="bento-card profile-compact">
-                    <img src="photos/kursat.jpg" class="profile-img profile-img-sm" alt="Ramazan Kürşat Çeçen">
-                    <span class="role">Principal Investigator</span>
-                    <span class="institution">Eskisehir Osmangazi University</span>
-                    <h3 class="heading-compact">Ramazan Kürşat Çeçen</h3>
-                    <p class="text-compact">Assoc. Prof. // Optimization, Meta-Heuristic Algorithms, Air traffic Flow Management, Aircraft Conflict Resolution.</p>
-                    <a href="https://scholar.google.com/citations?user=Kv9kgUwAAAAJ&hl=tr" class="scholar-link"
-                        target="_blank">Google Scholar</a>
-                </div>
-            </div>
-    </section>
-
-    <!-- Working Groups -->
-    <section id="working-groups">
-        <div class="container">
-            <div class="section-title">
-                <h2>Working Groups</h2>
-                <div class="label">Research Areas</div>
-            </div>
-
-            <div class="bento-grid">
-                <div class="bento-card">
-                    <span class="label">Group 01</span>
-                    <h3>Air Transport & ATM</h3>
-                    <p>Network planning, capacity balancing, and global trajectory operations.</p>
-                </div>
-                <div class="bento-card card-wip">
-                    <span class="label">Group 02</span>
-                    <h3>Surface & Airline Ops</h3>
-                    <p>Gate, taxi, and runway integration combined with airline recovery strategies.</p>
-                    <div class="status-badge wip">Work in Progress</div>
-                </div>
-                <div class="bento-card">
-                    <span class="label">Group 03</span>
-                    <h3>Safety & Human Factors</h3>
-                    <p>Operational risk management and human-AI teaming in complex systems.</p>
-                </div>
-                <div class="bento-card card-wip">
-                    <span class="label">Group 04</span>
-                    <h3>Sustainability</h3>
-                    <p>Fuel and emissions-aware operations and green aviation pathways.</p>
-                    <div class="status-badge wip">Work in Progress</div>
-                </div>
-                <div class="bento-card">
-                    <span class="label">Group 05</span>
-                    <h3>Data Science & AI</h3>
-                    <p>Decision support, machine learning pipelines, and digital twin frameworks.</p>
-                </div>
-                <div class="bento-card">
-                    <span class="label">Group 06</span>
-                    <h3>Education</h3>
-                    <p>Monthly clinics, webinars, and mentorship for research maturity.</p>
-                </div>
-                <div class="bento-card card-wip">
-                    <span class="label">Group 07</span>
-                    <h3>Urban Air Mobility</h3>
-                    <p>Advanced air mobility, eVTOL operations, and UAM traffic management integration.</p>
-                    <div class="status-badge wip">Work in Progress</div>
-                </div>
+        <!-- Research topics ticker -->
+        <div class="ticker">
+            <div class="ticker__track">
+                <ul class="ticker__group">
+                    <li class="ticker__item">Air Transport</li>
+                    <li class="ticker__item">Air Traffic Management</li>
+                    <li class="ticker__item">Airport Operations</li>
+                    <li class="ticker__item">Safety &amp; Human Factors</li>
+                    <li class="ticker__item">Sustainability</li>
+                    <li class="ticker__item">Operations Research</li>
+                    <li class="ticker__item">Machine Learning</li>
+                    <li class="ticker__item">Digital Twins</li>
+                    <li class="ticker__item">Urban Air Mobility</li>
+                    <li class="ticker__item">Decision Support</li>
+                </ul>
+                <ul class="ticker__group" aria-hidden="true">
+                    <li class="ticker__item">Air Transport</li>
+                    <li class="ticker__item">Air Traffic Management</li>
+                    <li class="ticker__item">Airport Operations</li>
+                    <li class="ticker__item">Safety &amp; Human Factors</li>
+                    <li class="ticker__item">Sustainability</li>
+                    <li class="ticker__item">Operations Research</li>
+                    <li class="ticker__item">Machine Learning</li>
+                    <li class="ticker__item">Digital Twins</li>
+                    <li class="ticker__item">Urban Air Mobility</li>
+                    <li class="ticker__item">Decision Support</li>
+                </ul>
             </div>
         </div>
-    </section>
 
-    <!-- Outputs -->
-    <section id="outputs">
-        <div class="container">
-            <div class="section-title">
-                <h2>Collective Output</h2>
-                <div class="label">Scientific Impact</div>
+        <!-- ================================================================
+             01 · About
+             ================================================================ -->
+        <section class="section" id="about">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow"><span class="eyebrow__num">01</span>Scientific Governance</span>
+                        <h2>The Laboratory</h2>
+                    </div>
+                </header>
+
+                <div class="bento">
+                    <article id="mission" class="card bento__feature" data-reveal>
+                        <svg class="feature-art" viewBox="0 0 300 300" aria-hidden="true">
+                            <g fill="none" stroke="currentColor" stroke-width="1">
+                                <circle cx="150" cy="150" r="148" />
+                                <circle cx="150" cy="150" r="112" stroke-dasharray="2 6" />
+                                <circle cx="150" cy="150" r="76" />
+                                <circle cx="150" cy="150" r="40" stroke-dasharray="2 6" />
+                                <path d="M150 0v300M0 150h300" />
+                                <path d="M150 150 255 45" stroke-width="1.5" />
+                            </g>
+                        </svg>
+                        <span class="eyebrow eyebrow--accent">Official Description</span>
+                        <h3>High-Caliber <em>Ambition</em></h3>
+                        <p class="lead">DARE Lab is a global, decentralized non-profit community of ambitious young and
+                            high-caliber aviation researchers dedicated to producing top-quality scientific outputs
+                            across the aviation ecosystem—spanning air transport, ATM, airport operations, safety, and
+                            sustainability.</p>
+                        <ul class="chips feature-chips">
+                            <li class="chip">Air transport</li>
+                            <li class="chip">ATM</li>
+                            <li class="chip">Airport operations</li>
+                            <li class="chip">Safety</li>
+                            <li class="chip">Sustainability</li>
+                        </ul>
+                        <p class="divider">We empower early-career talent alongside established experts, sharing
+                            datasets, simulation environments, and domain expertise globally.</p>
+                    </article>
+
+                    <article class="card" data-reveal>
+                        <span class="card__icon"><svg class="icon"><use href="#i-network" /></svg></span>
+                        <span class="eyebrow">Network Model</span>
+                        <h3>Decentralized.</h3>
+                        <p>Designed for flexibility and scale. Topic-driven working groups enable cross-pollination
+                            between teams and faster translation of ideas into publications.</p>
+                    </article>
+
+                    <article class="card" data-reveal>
+                        <span class="card__icon"><svg class="icon"><use href="#i-shield" /></svg></span>
+                        <span class="eyebrow">Priority</span>
+                        <h3>Quality-First.</h3>
+                        <p>Rigorous standards in research design, methodological transparency, and reproducibility
+                            aiming for high-impact scholarly assets.</p>
+                    </article>
+
+                    <article class="card card--accent bento__wide" data-reveal>
+                        <svg class="route-art" viewBox="0 0 400 200" aria-hidden="true">
+                            <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                                <path d="M14 186C110 50 270 22 388 64" stroke-dasharray="3 8" />
+                                <path d="M80 196C168 96 280 84 392 128" stroke-dasharray="3 8" />
+                            </g>
+                            <g fill="currentColor">
+                                <circle cx="14" cy="186" r="4" />
+                                <circle cx="388" cy="64" r="4" />
+                                <circle cx="392" cy="128" r="3" />
+                            </g>
+                        </svg>
+                        <span class="eyebrow">Roadmap</span>
+                        <h3>Building an international footprint.</h3>
+                        <p>Focusing on regular webinars, focused workshops, and producing edited volumes that set new
+                            directions for the aviation research community.</p>
+                        <ul class="chips">
+                            <li class="chip">Webinars</li>
+                            <li class="chip">Workshops</li>
+                            <li class="chip">Edited volumes</li>
+                        </ul>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <div class="grid-3">
-                <div class="bento-card">
-                    <span class="label">Journals</span>
-                    <h3>Publications</h3>
-                    <p>Rigorous peer-reviewed papers in top-tier aviation journals.</p>
-                    <div class="divider-top" style="font-size: 0.85rem; margin-top: var(--space-4); padding-top: var(--space-4);">
-                        <span class="label" style="font-size: 0.65rem; color: var(--accent); display: block; margin-bottom: var(--space-1);">Featured Publications</span>
-                        <div style="margin-bottom: var(--space-4); padding-bottom: var(--space-3); border-bottom: 1px solid var(--border);">
-                            <strong style="display: block; line-height: 1.4;">Scenario-robust gate assignment with real-time surface scheduling: A generalizable two-stage framework for uncertainty-aware airside operations</strong>
-                            <p style="font-size: 0.78rem; margin-top: var(--space-2); line-height: 1.5;">Dönmez, K., Ali, H., Pham, D.-T., &amp; Alam, S. (2027). Scenario-robust gate assignment with real-time surface scheduling: A generalizable two-stage framework for uncertainty-aware airside operations. <em>Transportation Research Part C: Emerging Technologies, 194(Part A)</em>, Article 105990. <a href="https://doi.org/10.1016/j.trc.2026.105990" class="scholar-link" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.trc.2026.105990</a></p>
+        <!-- ================================================================
+             02 · Structure (team)
+             To add a Principal Investigator, copy one <article class="card member member--pi"> block.
+             ================================================================ -->
+        <section class="section section--alt" id="structure">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow"><span class="eyebrow__num">02</span>Founders &amp; PIs</span>
+                        <h2>Laboratory Structure</h2>
+                    </div>
+                    <p class="section-head__aside">Researchers across Türkiye, Japan and the United States, organized
+                        as a decentralized network.</p>
+                </header>
+
+                <!-- Directors -->
+                <div class="team-group">
+                    <div class="team-group__label">
+                        <span class="eyebrow">Directors <span class="team-group__count">/ 02</span></span>
+                    </div>
+                    <div class="directors">
+                        <!-- Kadir Dönmez -->
+                        <article class="card member member--director" data-reveal>
+                            <div class="avatar avatar--lg">
+                                <img src="photos/team/kadir.jpg" alt="Kadir Dönmez" width="116" height="116" loading="lazy" decoding="async">
+                            </div>
+                            <div class="member__body">
+                                <span class="tag">Education &amp; Community</span>
+                                <span class="member__role">Founder &amp; Co-Director</span>
+                                <h3 class="member__name">Kadir Dönmez</h3>
+                                <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Samsun University <span class="iata">SZF</span></span></p>
+                                <p class="member__bio">Assoc. Prof. · Vice Dean at Faculty of Aeronautics and
+                                    Astronautics. ATM researcher.</p>
+                                <div class="member__links">
+                                    <a class="link-chip" href="https://scholar.google.com/citations?user=vpywJdsAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Hasnain Ali -->
+                        <article class="card member member--director" data-reveal>
+                            <div class="avatar avatar--lg">
+                                <img src="photos/team/hasnain.jpg" alt="Hasnain Ali" width="116" height="116" loading="lazy" decoding="async">
+                            </div>
+                            <div class="member__body">
+                                <span class="tag">Quality &amp; Strategy</span>
+                                <span class="member__role">Co-Founder &amp; Co-Director</span>
+                                <h3 class="member__name">Hasnain Ali</h3>
+                                <p class="member__bio">Lead – Data Science &amp; Optimization | Machine Learning +
+                                    Operations Research | Building Next-Gen Decision Systems.</p>
+                                <div class="member__links">
+                                    <a class="link-chip" href="https://scholar.google.com/citations?user=7gkNRBYAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Principal investigators -->
+                <div class="team-group">
+                    <div class="team-group__label">
+                        <span class="eyebrow">Principal Investigators <span class="team-group__count">/ 07</span></span>
+                    </div>
+                    <div class="pi-grid">
+                        <!-- Mustafa Özdemir -->
+                        <article class="card member member--pi" data-reveal>
+                            <div class="member__head">
+                                <div class="avatar"><img src="photos/team/mustafa.jpg" alt="Mustafa Özdemir" width="72" height="72" loading="lazy" decoding="async"></div>
+                                <span class="iata">HND</span>
+                            </div>
+                            <span class="member__role">Principal Investigator</span>
+                            <h3 class="member__name">Mustafa Özdemir</h3>
+                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>The University of Tokyo</span></p>
+                            <p class="member__bio">Postdoctoral Researcher | PhD in ATM | Fulbright Alumnus.</p>
+                            <div class="member__links">
+                                <a class="link-chip" href="https://scholar.google.dk/citations?user=NxffrX8AAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                            </div>
+                        </article>
+
+                        <!-- Mahmut Bakır -->
+                        <article class="card member member--pi" data-reveal>
+                            <div class="member__head">
+                                <div class="avatar"><img src="photos/team/mahmut.jpg" alt="Mahmut Bakır" width="72" height="72" loading="lazy" decoding="async"></div>
+                                <span class="iata">SZF</span>
+                            </div>
+                            <span class="member__role">Principal Investigator</span>
+                            <h3 class="member__name">Mahmut Bakır</h3>
+                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Samsun University</span></p>
+                            <p class="member__bio">Assoc. Prof. · Head of Aviation Management Department.</p>
+                            <div class="member__links">
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=OSSfn5wAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                            </div>
+                        </article>
+
+                        <!-- Saqib Gulzar -->
+                        <article class="card member member--pi" data-reveal>
+                            <div class="member__head">
+                                <div class="avatar"><img src="photos/team/saqib.jpg" alt="Saqib Gulzar" width="72" height="72" loading="lazy" decoding="async"></div>
+                                <span class="iata">PUB</span>
+                            </div>
+                            <span class="member__role">Principal Investigator</span>
+                            <h3 class="member__name">Saqib Gulzar</h3>
+                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Colorado State University Pueblo</span></p>
+                            <p class="member__bio">Assistant Professor. Lead on Decision Support.</p>
+                            <div class="member__links">
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=DsVrc_EAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                            </div>
+                        </article>
+
+                        <!-- Mohammad Rauf Sheikhi -->
+                        <article class="card member member--pi" data-reveal>
+                            <div class="member__head">
+                                <div class="avatar"><img src="photos/team/rauf.jpg" alt="Mohammad Rauf Sheikhi" width="72" height="72" loading="lazy" decoding="async"></div>
+                                <span class="iata">SZF</span>
+                            </div>
+                            <span class="member__role">Principal Investigator</span>
+                            <h3 class="member__name">Mohammad Rauf Sheikhi</h3>
+                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Samsun University</span></p>
+                            <p class="member__bio">Assistant Professor at Faculty of Aeronautics and Astronautics.</p>
+                            <div class="member__links">
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=1-56V6QAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                            </div>
+                        </article>
+
+                        <!-- Hakan Aygün -->
+                        <article class="card member member--pi" data-reveal>
+                            <div class="member__head">
+                                <div class="avatar"><img src="photos/team/hakan.jpg" alt="Hakan Aygün" width="72" height="72" loading="lazy" decoding="async"></div>
+                                <span class="iata">EZS</span>
+                            </div>
+                            <span class="member__role">Principal Investigator</span>
+                            <h3 class="member__name">Hakan Aygün</h3>
+                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Fırat University</span></p>
+                            <p class="member__bio">Assoc. Prof. · Energy-exergy, aviation fuels, emissions research.</p>
+                            <div class="member__links">
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=H0JvFHQAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                            </div>
+                        </article>
+
+                        <!-- Gökhan Tanrıverdi -->
+                        <article class="card member member--pi" data-reveal>
+                            <div class="member__head">
+                                <div class="avatar"><img src="photos/team/gokhan.jpg" alt="Gökhan Tanrıverdi" width="72" height="72" loading="lazy" decoding="async"></div>
+                                <span class="iata">ERC</span>
+                            </div>
+                            <span class="member__role">Principal Investigator</span>
+                            <h3 class="member__name">Gökhan Tanrıverdi</h3>
+                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Erzincan Binali Yıldırım University</span></p>
+                            <p class="member__bio">Assoc. Prof. · Aviation Management, Air Cargo, Strategic Decision-Making, Decarbonization.</p>
+                            <div class="member__links">
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=bZnDdcgAAAAJ&amp;hl=tr" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                            </div>
+                        </article>
+
+                        <!-- Ramazan Kürşat Çeçen -->
+                        <article class="card member member--pi" data-reveal>
+                            <div class="member__head">
+                                <div class="avatar"><img src="photos/team/kursat.jpg" alt="Ramazan Kürşat Çeçen" width="72" height="72" loading="lazy" decoding="async"></div>
+                                <span class="iata">AOE</span>
+                            </div>
+                            <span class="member__role">Principal Investigator</span>
+                            <h3 class="member__name">Ramazan Kürşat Çeçen</h3>
+                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Eskişehir Osmangazi University</span></p>
+                            <p class="member__bio">Assoc. Prof. · Optimization, Meta-Heuristic Algorithms, Air Traffic Flow Management, Aircraft Conflict Resolution.</p>
+                            <div class="member__links">
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=Kv9kgUwAAAAJ&amp;hl=tr" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Honorary member -->
+                <div class="team-group">
+                    <div class="team-group__label">
+                        <span class="eyebrow">Honorary Member <span class="team-group__count">/ 01</span></span>
+                    </div>
+
+                    <article class="card member member--honorary" data-reveal>
+                        <div class="member__identity">
+                            <div class="avatar"><img src="photos/team/cem.jpg" alt="Cem Çetek" width="72" height="72" loading="lazy" decoding="async"></div>
+                            <div>
+                                <span class="member__role member__role--honorary"><svg class="icon icon--xs"><use href="#i-award" /></svg>Honorary Member</span>
+                                <h3 class="member__name">Cem Çetek</h3>
+                                <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Eskişehir Technical University <span class="iata">AOE</span></span></p>
+                            </div>
                         </div>
+                        <div class="member__details">
+                            <p class="member__bio">Prof. Dr. · Dean, Faculty of Aeronautics and Astronautics. Air Traffic
+                                Management, Fast-time Modeling and Simulation, Airport Capacity and Flow Management,
+                                Aircraft Performance, Air Traffic Conflict Resolution.</p>
+                            <div class="member__links">
+                                <a class="link-chip" href="mailto:ccetek@eskisehir.edu.tr"><svg class="icon"><use href="#i-mail" /></svg>ccetek@eskisehir.edu.tr</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             03 · Working groups
+             ================================================================ -->
+        <section class="section" id="working-groups">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow"><span class="eyebrow__num">03</span>Research Areas</span>
+                        <h2>Working Groups</h2>
+                    </div>
+                    <p class="section-head__aside">Topic-driven groups that connect members across institutions and
+                        time zones.</p>
+                </header>
+
+                <div class="wg-grid">
+                    <article class="card wg" data-reveal>
+                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-radar" /></svg></span><span class="wg__num">WG · 01</span></div>
+                        <h3>Air Transport &amp; ATM</h3>
+                        <p>Network planning, capacity balancing, and global trajectory operations.</p>
+                    </article>
+
+                    <article class="card wg wg--wip" data-reveal>
+                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-runway" /></svg></span><span class="wg__num">WG · 02</span></div>
+                        <h3>Surface &amp; Airline Ops</h3>
+                        <p>Gate, taxi, and runway integration combined with airline recovery strategies.</p>
+                        <span class="tag tag--warn wg__status"><span class="tag__dot"></span>Work in progress</span>
+                    </article>
+
+                    <article class="card wg" data-reveal>
+                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-safety" /></svg></span><span class="wg__num">WG · 03</span></div>
+                        <h3>Safety &amp; Human Factors</h3>
+                        <p>Operational risk management and human-AI teaming in complex systems.</p>
+                    </article>
+
+                    <article class="card wg wg--wip" data-reveal>
+                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-leaf" /></svg></span><span class="wg__num">WG · 04</span></div>
+                        <h3>Sustainability</h3>
+                        <p>Fuel and emissions-aware operations and green aviation pathways.</p>
+                        <span class="tag tag--warn wg__status"><span class="tag__dot"></span>Work in progress</span>
+                    </article>
+
+                    <article class="card wg" data-reveal>
+                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-cpu" /></svg></span><span class="wg__num">WG · 05</span></div>
+                        <h3>Data Science &amp; AI</h3>
+                        <p>Decision support, machine learning pipelines, and digital twin frameworks.</p>
+                    </article>
+
+                    <article class="card wg" data-reveal>
+                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-book-open" /></svg></span><span class="wg__num">WG · 06</span></div>
+                        <h3>Education</h3>
+                        <p>Monthly clinics, webinars, and mentorship for research maturity.</p>
+                    </article>
+
+                    <article class="card wg wg--wip" data-reveal>
+                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-drone" /></svg></span><span class="wg__num">WG · 07</span></div>
+                        <h3>Urban Air Mobility</h3>
+                        <p>Advanced air mobility, eVTOL operations, and UAM traffic management integration.</p>
+                        <span class="tag tag--warn wg__status"><span class="tag__dot"></span>Work in progress</span>
+                    </article>
+
+                    <a class="card wg wg--cta" href="#join" data-reveal>
                         <div>
-                            <strong style="display: block; line-height: 1.4;">Policy-based Bayesian-MILP optimization framework for airport departure sequencing under uncertainty</strong>
-                            <p style="font-size: 0.78rem; margin-top: var(--space-2); line-height: 1.5;">Dönmez, K., Ali, H., Gulzar, S., &amp; Alam, S. (2026). Policy-based Bayesian-MILP optimization framework for airport departure sequencing under uncertainty. <em>Transportation Research Interdisciplinary Perspectives, 39</em>, Article 102206. <a href="https://doi.org/10.1016/j.trip.2026.102206" class="scholar-link" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.trip.2026.102206</a></p>
+                            <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-plus" /></svg></span></div>
+                            <h3>Propose a group</h3>
+                            <p>Have a research direction in mind? Tell us about it in your membership application.</p>
                         </div>
-                    </div>
+                        <span class="text-link">Join the Lab <svg class="icon icon--sm"><use href="#i-arrow-right" /></svg></span>
+                    </a>
                 </div>
-                <div class="bento-card">
-                    <span class="label">Industry</span>
-                    <h3>Projects</h3>
-                    <p>Funded collaborations delivering real-world operational impact.</p>
-                    <div class="divider-top" style="font-size: 0.85rem; margin-top: var(--space-4); padding-top: var(--space-4);">
-                        <span class="label" style="font-size: 0.65rem; color: var(--accent); display: block; margin-bottom: var(--space-1);">Featured Project</span>
-                        <strong>TÜBİTAK 4004</strong> — Discover Air Traffic Management: Hands-on Air Traffic Control Simulation Program
-                        <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: var(--space-2);">
-                            Dr. Mustafa ÖZDEMİR (Project Coordinator)<br>
-                            Assoc. Prof. Dr. Kadir Dönmez (Project Expert)
+            </div>
+        </section>
+
+        <!-- ================================================================
+             04 · Outputs
+             ================================================================ -->
+        <section class="section section--alt" id="outputs">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow"><span class="eyebrow__num">04</span>Scientific Impact</span>
+                        <h2>Collective Output</h2>
+                    </div>
+                </header>
+
+                <div class="outputs-grid">
+                    <!-- Publications -->
+                    <article class="card" data-reveal>
+                        <div class="output-head">
+                            <span class="card__icon"><svg class="icon"><use href="#i-doc" /></svg></span>
+                            <div>
+                                <span class="eyebrow">Journals</span>
+                                <h3>Publications</h3>
+                                <p>Rigorous peer-reviewed papers in top-tier aviation journals.</p>
+                            </div>
                         </div>
-                        <a href="https://4000.tubitak.gov.tr/4004/225b949" class="scholar-link" target="_blank" style="margin-top: var(--space-2); font-size: 0.75rem;">View Project Page →</a>
-                    </div>
-                </div>
-                <div class="bento-card">
-                    <span class="label">Academia</span>
-                    <h3>Books</h3>
-                    <p>Comprehensive handbooks setting the international research agenda.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Latest Updates / News -->
-    <section id="updates">
-        <div class="container">
-            <div class="section-title">
-                <h2>Latest Updates</h2>
-                <div class="label">News & Announcements</div>
-            </div>
+                        <ol class="pub-list">
+                            <li class="pub">
+                                <div class="pub__meta">
+                                    <span class="tag">Featured</span>
+                                    <span class="pub__journal">Transportation Research Part C</span>
+                                    <span class="pub__year">2027</span>
+                                </div>
+                                <h4 class="pub__title"><a href="https://doi.org/10.1016/j.trc.2026.105990" target="_blank" rel="noopener">Scenario-robust gate assignment with real-time surface scheduling: A generalizable two-stage framework for uncertainty-aware airside operations</a></h4>
+                                <p class="pub__authors">Dönmez, K., Ali, H., Pham, D.-T., &amp; Alam, S.</p>
+                                <p class="pub__details"><em>Transportation Research Part C: Emerging Technologies, 194(Part A)</em>, Article 105990</p>
+                                <div class="pub__actions">
+                                    <a class="btn btn--ghost btn--xs" href="https://doi.org/10.1016/j.trc.2026.105990" target="_blank" rel="noopener">doi.org/10.1016/j.trc.2026.105990 <svg class="icon"><use href="#i-arrow-up-right" /></svg></a>
+                                    <button class="btn btn--ghost btn--xs" type="button" data-cite="Dönmez, K., Ali, H., Pham, D.-T., &amp; Alam, S. (2027). Scenario-robust gate assignment with real-time surface scheduling: A generalizable two-stage framework for uncertainty-aware airside operations. Transportation Research Part C: Emerging Technologies, 194(Part A), Article 105990. https://doi.org/10.1016/j.trc.2026.105990"><svg class="icon"><use href="#i-copy" /></svg><span>Copy APA</span></button>
+                                </div>
+                            </li>
+                            <li class="pub">
+                                <div class="pub__meta">
+                                    <span class="tag">Featured</span>
+                                    <span class="pub__journal">Transportation Research Interdisciplinary Perspectives</span>
+                                    <span class="pub__year">2026</span>
+                                </div>
+                                <h4 class="pub__title"><a href="https://doi.org/10.1016/j.trip.2026.102206" target="_blank" rel="noopener">Policy-based Bayesian-MILP optimization framework for airport departure sequencing under uncertainty</a></h4>
+                                <p class="pub__authors">Dönmez, K., Ali, H., Gulzar, S., &amp; Alam, S.</p>
+                                <p class="pub__details"><em>Transportation Research Interdisciplinary Perspectives, 39</em>, Article 102206</p>
+                                <div class="pub__actions">
+                                    <a class="btn btn--ghost btn--xs" href="https://doi.org/10.1016/j.trip.2026.102206" target="_blank" rel="noopener">doi.org/10.1016/j.trip.2026.102206 <svg class="icon"><use href="#i-arrow-up-right" /></svg></a>
+                                    <button class="btn btn--ghost btn--xs" type="button" data-cite="Dönmez, K., Ali, H., Gulzar, S., &amp; Alam, S. (2026). Policy-based Bayesian-MILP optimization framework for airport departure sequencing under uncertainty. Transportation Research Interdisciplinary Perspectives, 39, Article 102206. https://doi.org/10.1016/j.trip.2026.102206"><svg class="icon"><use href="#i-copy" /></svg><span>Copy APA</span></button>
+                                </div>
+                            </li>
+                        </ol>
+                    </article>
 
-            <div class="updates-slider">
-                <button class="updates-arrow updates-arrow-previous" type="button" data-updates-direction="previous" aria-label="Previous updates">←</button>
-                <div class="updates-grid" aria-label="Latest DARE Lab updates" aria-live="polite">
-                    <div class="bento-card updates-post-card" data-update-card style="padding: 0; overflow: hidden; background: #fff;">
-                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7499180425198792705" height="550" width="100%" frameborder="0" allowfullscreen="" title="Latest DARE Lab LinkedIn post" style="display: block;"></iframe>
-                    </div>
-                    <div class="bento-card updates-post-card" data-update-card style="padding: 0; overflow: hidden; background: #fff;">
-                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7479067808887177217" height="550" width="100%" frameborder="0" allowfullscreen="" title="Embedded post" style="display: block;"></iframe>
-                    </div>
-                    <div class="bento-card updates-post-card" data-update-card style="padding: 0; overflow: hidden; background: #fff;">
-                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7453414189261332480" height="550" width="100%" frameborder="0" allowfullscreen="" title="Embedded post" style="display: block;"></iframe>
-                    </div>
-                    <div class="bento-card updates-post-card" data-update-card style="padding: 0; overflow: hidden; background: #fff;">
-                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7442184438345658368" height="550" width="100%" frameborder="0" allowfullscreen="" title="Embedded post" style="display: block;"></iframe>
-                    </div>
-                </div>
-                <button class="updates-arrow updates-arrow-next" type="button" data-updates-direction="next" aria-label="Next updates">→</button>
-            </div>
-        </div>
-    </section>
+                    <div class="outputs-side">
+                        <!-- Projects -->
+                        <article class="card" data-reveal>
+                            <div class="output-head">
+                                <span class="card__icon"><svg class="icon"><use href="#i-flask" /></svg></span>
+                                <div>
+                                    <span class="eyebrow">Industry</span>
+                                    <h3>Projects</h3>
+                                    <p>Funded collaborations delivering real-world operational impact.</p>
+                                </div>
+                            </div>
+                            <div class="project">
+                                <span class="eyebrow eyebrow--accent">Featured Project</span>
+                                <p class="project__title"><strong>TÜBİTAK 4004</strong> — Discover Air Traffic Management: Hands-on Air Traffic Control Simulation Program</p>
+                                <ul class="project__people">
+                                    <li>Dr. Mustafa ÖZDEMİR <span>· Project Coordinator</span></li>
+                                    <li>Assoc. Prof. Dr. Kadir Dönmez <span>· Project Expert</span></li>
+                                </ul>
+                                <a class="text-link" href="https://4000.tubitak.gov.tr/4004/225b949" target="_blank" rel="noopener">View project page <svg class="icon icon--sm"><use href="#i-arrow-up-right" /></svg></a>
+                            </div>
+                        </article>
 
-    <!-- Governance & Growth Section -->
-    <section id="governance">
-        <div class="container">
-            <div class="section-title">
-                <h2>Governance & Growth</h2>
-                <div class="label">Policy & Programs</div>
-            </div>
-
-            <div class="dual-deck">
-                <!-- Quality & Policies -->
-                <div class="deck-item">
-                    <span class="label">Quality & Policies</span>
-                    <h3>Internal Quality Gate</h3>
-                    <p>All outputs undergo rigorous internal review for method rigor and clarity before external
-                        submission.</p>
-                    <h3 style="margin-top: 2rem;">Authorship & Ethics</h3>
-                    <p>Fair credit based on substantial intellectual contribution and ethical data handling.</p>
-                </div>
-
-                <!-- Programs -->
-                <div class="deck-item">
-                    <span class="label">Programs</span>
-                    <h3>Monthly Webinars</h3>
-                    <p>Guest speakers, clinics, and internal talks on the latest research.</p>
-                    <h3 style="margin-top: 2rem;">Mentoring</h3>
-                    <p>Support for early-career researchers and proposal writing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Protocol Section -->
-    <section id="protocol">
-        <div class="container">
-            <div class="section-title">
-                <h2>Scientific Protocol</h2>
-                <div class="label">Ethics & Legal Framework</div>
-            </div>
-
-            <div class="grid-2">
-                <div class="bento-card">
-                    <span class="label">Legal Disclaimer</span>
-                    <h3>Institutional Independence.</h3>
-                    <p>DARE Lab is a decentralized research collective. Institutional affiliations of members are for
-                        identification purposes only. The Lab does not legally represent the universities or
-                        organizations where its members are employed. All research findings, opinions, and outputs are
-                        solely the responsibility of the individual authors and do not necessarily reflect the official
-                        policies or positions of their respective institutions.</p>
-                </div>
-
-                <div class="bento-card">
-                    <span class="label">Ethical Code</span>
-                    <h3>COPE Guidelines.</h3>
-                    <p>We adhere to the Committee on Publication Ethics (COPE) guidelines. Our
-                        members commit to intellectual honesty, data integrity, and transparent conflict-of-interest
-                        disclosures in all scholarly activities.</p>
-
-                    <div class="protocol-card" style="margin-top: 1.5rem;">
-                        <h4>Limited Liability</h4>
-                        <p class="protocol-text">The DARE Lab provides a collaborative platform for academic exchange.
-                            Under no circumstances
-                            shall the Lab or its founders be held liable for any direct, indirect, or consequential
-                            damages
-                            arising from the use or interpretation of the research outputs or datasets provided on this
-                            platform.</p>
+                        <!-- Books -->
+                        <article class="card" data-reveal>
+                            <div class="output-head">
+                                <span class="card__icon"><svg class="icon"><use href="#i-book" /></svg></span>
+                                <div>
+                                    <span class="eyebrow">Academia</span>
+                                    <h3>Books</h3>
+                                    <p>Comprehensive handbooks setting the international research agenda.</p>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Join Section -->
-    <section id="join">
-        <div class="container">
-            <div class="grid-2">
-                <div>
-                    <div class="section-title">
-                        <h2>Join the Lab</h2>
-                        <div class="label">Membership</div>
+        <!-- ================================================================
+             05 · Latest updates (LinkedIn posts)
+             To add a post: copy one .update-card block and change the activity URN.
+             ================================================================ -->
+        <section class="section" id="updates">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow"><span class="eyebrow__num">05</span>News &amp; Announcements</span>
+                        <h2>Latest Updates</h2>
                     </div>
-                    <p style="color: var(--text-muted); margin-bottom: var(--space-8); font-size: 0.95rem;">
-                        Participation is based on research maturity, contribution intent, and cultural alignment with
+                    <div class="updates-controls">
+                        <button class="icon-btn slider-btn" type="button" data-updates-direction="previous" aria-label="Previous updates"><svg class="icon"><use href="#i-arrow-left" /></svg></button>
+                        <button class="icon-btn slider-btn" type="button" data-updates-direction="next" aria-label="Next updates"><svg class="icon"><use href="#i-arrow-right" /></svg></button>
+                    </div>
+                </header>
+
+                <div class="updates-grid" aria-live="polite">
+                    <div class="update-card" data-update-card>
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7499180425198792705" height="550" frameborder="0" allowfullscreen="" loading="lazy" title="Latest DARE Lab LinkedIn post"></iframe>
+                    </div>
+                    <div class="update-card" data-update-card>
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7479067808887177217" height="550" frameborder="0" allowfullscreen="" loading="lazy" title="DARE Lab LinkedIn post"></iframe>
+                    </div>
+                    <div class="update-card" data-update-card>
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7453414189261332480" height="550" frameborder="0" allowfullscreen="" loading="lazy" title="DARE Lab LinkedIn post"></iframe>
+                    </div>
+                    <div class="update-card" data-update-card>
+                        <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:activity:7442184438345658368" height="550" frameborder="0" allowfullscreen="" loading="lazy" title="DARE Lab LinkedIn post"></iframe>
+                    </div>
+                </div>
+
+                <div class="updates-foot" data-reveal>
+                    <a class="btn btn--ghost btn--sm" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener"><svg class="icon"><use href="#i-linkedin" /></svg>See all posts on LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             06 · Governance & growth
+             ================================================================ -->
+        <section class="section section--alt" id="governance">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow"><span class="eyebrow__num">06</span>Policy &amp; Programs</span>
+                        <h2>Governance &amp; Growth</h2>
+                    </div>
+                </header>
+
+                <div class="gov-grid">
+                    <article class="card" data-reveal>
+                        <span class="eyebrow eyebrow--accent">Quality &amp; Policies</span>
+                        <ul class="gov-list">
+                            <li class="gov-item">
+                                <span class="card__icon"><svg class="icon"><use href="#i-check-circle" /></svg></span>
+                                <div>
+                                    <h3>Internal Quality Gate</h3>
+                                    <p>All outputs undergo rigorous internal review for method rigor and clarity before
+                                        external submission.</p>
+                                </div>
+                            </li>
+                            <li class="gov-item">
+                                <span class="card__icon"><svg class="icon"><use href="#i-pen" /></svg></span>
+                                <div>
+                                    <h3>Authorship &amp; Ethics</h3>
+                                    <p>Fair credit based on substantial intellectual contribution and ethical data
+                                        handling.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <article class="card" data-reveal>
+                        <span class="eyebrow eyebrow--accent">Programs</span>
+                        <ul class="gov-list">
+                            <li class="gov-item">
+                                <span class="card__icon"><svg class="icon"><use href="#i-video" /></svg></span>
+                                <div>
+                                    <h3>Monthly Webinars</h3>
+                                    <p>Guest speakers, clinics, and internal talks on the latest research.</p>
+                                </div>
+                            </li>
+                            <li class="gov-item">
+                                <span class="card__icon"><svg class="icon"><use href="#i-users" /></svg></span>
+                                <div>
+                                    <h3>Mentoring</h3>
+                                    <p>Support for early-career researchers and proposal writing.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             07 · Scientific protocol
+             ================================================================ -->
+        <section class="section" id="protocol">
+            <div class="container">
+                <header class="section-head" data-reveal>
+                    <div>
+                        <span class="eyebrow"><span class="eyebrow__num">07</span>Ethics &amp; Legal Framework</span>
+                        <h2>Scientific Protocol</h2>
+                    </div>
+                    <a class="text-link" href="policies.html">Read the full policies <svg class="icon icon--sm"><use href="#i-arrow-right" /></svg></a>
+                </header>
+
+                <div class="protocol-grid">
+                    <article class="card" data-reveal>
+                        <span class="card__icon"><svg class="icon"><use href="#i-scale" /></svg></span>
+                        <span class="eyebrow">Legal Disclaimer</span>
+                        <h3>Institutional Independence.</h3>
+                        <p>DARE Lab is a decentralized research collective. Institutional affiliations of members are
+                            for identification purposes only. The Lab does not legally represent the universities or
+                            organizations where its members are employed. All research findings, opinions, and outputs
+                            are solely the responsibility of the individual authors and do not necessarily reflect the
+                            official policies or positions of their respective institutions.</p>
+                    </article>
+
+                    <article class="card" data-reveal>
+                        <span class="card__icon"><svg class="icon"><use href="#i-book-open" /></svg></span>
+                        <span class="eyebrow">Ethical Code</span>
+                        <h3>COPE Guidelines.</h3>
+                        <p>We adhere to the Committee on Publication Ethics (COPE) guidelines. Our members commit to
+                            intellectual honesty, data integrity, and transparent conflict-of-interest disclosures in
+                            all scholarly activities.</p>
+
+                        <div class="callout">
+                            <h4><svg class="icon icon--sm"><use href="#i-alert" /></svg>Limited Liability</h4>
+                            <p>The DARE Lab provides a collaborative platform for academic exchange. Under no
+                                circumstances shall the Lab or its founders be held liable for any direct, indirect, or
+                                consequential damages arising from the use or interpretation of the research outputs or
+                                datasets provided on this platform.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             08 · Join
+             ================================================================ -->
+        <section class="section section--alt" id="join">
+            <div class="container join-grid">
+                <div class="join-copy" data-reveal>
+                    <span class="eyebrow"><span class="eyebrow__num">08</span>Membership</span>
+                    <h2>Join the Lab</h2>
+                    <p>Participation is based on research maturity, contribution intent, and cultural alignment with
                         the DARE principles.</p>
 
-                    <div class="deck-item profile-compact">
-                        <span class="label" style="font-size: var(--text-xs);">Protocol</span>
-                        <h4 style="font-size: var(--text-base); margin-bottom: var(--space-2);">Application Process</h4>
-                        <p class="text-compact">Interest Form → Alignment Call → First Contribution.</p>
-                    </div>
+                    <ol class="steps">
+                        <li class="step">
+                            <div>
+                                <h3>Interest Form</h3>
+                                <p>Tell us about your research and how you would like to contribute.</p>
+                            </div>
+                        </li>
+                        <li class="step">
+                            <div>
+                                <h3>Alignment Call</h3>
+                                <p>A short conversation about fit, interests and working groups.</p>
+                            </div>
+                        </li>
+                        <li class="step">
+                            <div>
+                                <h3>First Contribution</h3>
+                                <p>Start collaborating on a project within a working group.</p>
+                            </div>
+                        </li>
+                    </ol>
+
+                    <a class="text-link" href="policies.html">Participation Agreement &amp; Policies <svg class="icon icon--sm"><use href="#i-arrow-right" /></svg></a>
                 </div>
 
-                <div class="bento-card card-padding-compact">
-                    <form class="form form-compact" action="https://formspree.io/f/mbdaowaw" method="POST">
-                        <input type="text" name="name" placeholder="Full Name"
-                            style="background: transparent; border-bottom: 1px solid var(--border); border-top:none; border-left:none; border-right:none; border-radius:0; padding: 0.75rem 0; font-size: 0.9rem; color: var(--text);"
-                            required />
-                        <input type="email" name="email" placeholder="Email"
-                            style="background: transparent; border-bottom: 1px solid var(--border); border-top:none; border-left:none; border-right:none; border-radius:0; padding: 0.75rem 0; font-size: 0.9rem; color: var(--text);"
-                            required />
-                        <input type="url" name="profile_link" placeholder="LinkedIn Profile or CV Link"
-                            style="background: transparent; border-bottom: 1px solid var(--border); border-top:none; border-left:none; border-right:none; border-radius:0; padding: 0.75rem 0; font-size: 0.9rem; color: var(--text);"
-                            required />
-                        <textarea name="message" placeholder="Tell us about your research..."
-                            style="background: transparent; border-bottom: 1px solid var(--border); border-top:none; border-left:none; border-right:none; border-radius:0; padding: 0.75rem 0; font-size: 0.9rem; min-height: 100px; resize: none; color: var(--text);"
-                            required></textarea>
+                <div class="card form-card" data-reveal>
+                    <form class="form" action="https://formspree.io/f/mbdaowaw" method="POST">
+                        <div class="form__row">
+                            <label class="field">
+                                <span class="field__label">Full name</span>
+                                <input class="field__input" type="text" name="name" placeholder="Jane Doe" autocomplete="name" required>
+                            </label>
+                            <label class="field">
+                                <span class="field__label">Email</span>
+                                <input class="field__input" type="email" name="email" placeholder="name@university.edu" autocomplete="email" required>
+                            </label>
+                        </div>
+                        <label class="field">
+                            <span class="field__label">LinkedIn profile or CV link</span>
+                            <input class="field__input" type="url" name="profile_link" placeholder="https://" required>
+                        </label>
+                        <label class="field">
+                            <span class="field__label">Your research</span>
+                            <textarea class="field__input" name="message" placeholder="Tell us about your research..." required></textarea>
+                        </label>
 
-                        <label
-                            style="display: flex; gap: 0.75rem; margin-top: 1rem; font-size: 0.85rem; align-items: flex-start; cursor: pointer;">
-                            <input type="checkbox" name="agree_policies" required style="margin-top: 0.25rem;" />
-                            <span style="color: var(--text-muted);">I have read and agree to the <a href="policies.html"
-                                    target="_blank" style="color: var(--accent); text-decoration: underline;">DARE Lab
+                        <label class="consent">
+                            <input type="checkbox" name="agree_policies" required>
+                            <span>I have read and agree to the <a href="policies.html" target="_blank">DARE Lab
                                     Participation Agreement and Policies</a></span>
                         </label>
 
                         <input type="hidden" name="_subject" value="New DARE Lab Membership Application">
                         <input type="hidden" name="_next" value="https://dareaviation.github.io/dare-lab/">
 
-                        <button class="btn primary" type="submit" style="width: 100%; margin-top: 1rem;">Submit
-                            Membership Interest</button>
+                        <button class="btn btn--primary btn--block" type="submit">
+                            Submit Membership Interest
+                            <svg class="icon icon--arrow"><use href="#i-arrow-right" /></svg>
+                        </button>
                     </form>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="footer-style">
+    <!-- ================================================================
+         Footer
+         ================================================================ -->
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-flex">
-                <div>
-                    <h3 class="footer-brand">DARE LAB</h3>
-                    <p class="footer-text">© <span id="year">2024</span> Decentralized Aviation Research & Education
-                        Lab (Non-Profit).</p>
-                    <p class="footer-text" style="margin-top: 0.75rem; display: flex; gap: 1.5rem; align-items: center;">
-                        <a href="mailto:dare.aviation@gmail.com"
-                            style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            dare.aviation@gmail.com
-                        </a>
-                        <a href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank"
-                            style="color: var(--text-muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                            LinkedIn
-                        </a>
-                    </p>
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a class="brand" href="#top" aria-label="DARE Lab — back to top">
+                        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+                            <defs>
+                                <linearGradient id="markGradFooter" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0" stop-color="#3b82f6" />
+                                    <stop offset="1" stop-color="#4fd1e8" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="0.5" y="0.5" width="31" height="31" rx="9" fill="#0b1324" stroke="rgba(255,255,255,0.14)" />
+                            <circle cx="16" cy="16.5" r="8.2" fill="none" stroke="url(#markGradFooter)" stroke-width="1.8" />
+                            <path d="M6.3 22.2C9.6 14 17 9.4 25 10.6" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" />
+                            <circle cx="25" cy="10.6" r="2.3" fill="#fff" />
+                        </svg>
+                        <span class="brand__word">DARE<span>LAB</span></span>
+                    </a>
+                    <p>Decentralized Aviation Research &amp; Education Lab — a global, non-profit network of aviation
+                        researchers.</p>
+                    <div class="footer-social">
+                        <a class="icon-btn" href="mailto:dare.aviation@gmail.com" aria-label="Email DARE Lab"><svg class="icon icon--sm"><use href="#i-mail" /></svg></a>
+                        <a class="icon-btn" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener" aria-label="DARE Lab on LinkedIn"><svg class="icon icon--sm"><use href="#i-linkedin" /></svg></a>
+                    </div>
                 </div>
-                <div class="menu">
-                    <a href="#protocol">Protocol</a>
-                    <a href="policies.html">Policies</a>
-                    <a href="#join">Join</a>
+
+                <div class="footer-col">
+                    <h4>Laboratory</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#structure">Structure</a></li>
+                        <li><a href="#working-groups">Working Groups</a></li>
+                        <li><a href="#outputs">Outputs</a></li>
+                    </ul>
                 </div>
+
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="#updates">Updates</a></li>
+                        <li><a href="#governance">Governance</a></li>
+                        <li><a href="#protocol">Protocol</a></li>
+                        <li><a href="policies.html">Policies</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:dare.aviation@gmail.com">dare.aviation@gmail.com</a></li>
+                        <li><a href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener">LinkedIn <svg class="icon icon--xs"><use href="#i-arrow-up-right" /></svg></a></li>
+                        <li><a href="#join">Join the Lab</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="footer-wordmark" aria-hidden="true">DARE Lab</p>
+
+            <div class="footer-bottom">
+                <p>© <span id="year">2024</span> Decentralized Aviation Research &amp; Education Lab (Non-Profit).</p>
+                <a href="#top">Back to top <svg class="icon icon--xs"><use href="#i-arrow-up" /></svg></a>
             </div>
         </div>
     </footer>
 
-    <!-- External Script -->
-    <script src="js/main.js"></script>
+    <script src="js/globe.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>
