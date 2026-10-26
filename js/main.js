@@ -99,7 +99,8 @@
         el.style.removeProperty('--reveal-delay');
     }
 
-    if (!reduceMotion && 'IntersectionObserver' in window) {
+    if (!reduceMotion && 'IntersectionObserver' in window && root.classList.contains('js')) {
+        root.classList.add('reveal-ready');
         var siblingIndex = new Map();
         revealEls.forEach(function (el) {
             var parent = el.parentElement;

@@ -44,6 +44,8 @@
             var d = document.documentElement;
             d.classList.add('js');
             try { var t = localStorage.getItem('dare_theme'); if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t); } catch (e) { }
+            // Fail-safe: if js/main.js has not started within 2.5 s, show all content anyway
+            setTimeout(function () { if (!d.classList.contains('reveal-ready')) d.classList.remove('js'); }, 2500);
         })();
     </script>
 
@@ -54,7 +56,7 @@
         href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/main.css?v=20261026-2">
 
     <!-- Structured data -->
     <script type="application/ld+json">
@@ -82,7 +84,7 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <!-- ================================================================
-         Icon sprite — reference with <svg class="icon"><use href="#i-name"/></svg>
+         Icon sprite — reference with <svg width="20" height="20" class="icon"><use href="#i-name"/></svg>
          ================================================================ -->
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
         <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
@@ -127,7 +129,7 @@
     <header class="site-header" id="siteHeader">
         <nav class="nav" aria-label="Primary">
             <a class="brand" href="#top" aria-label="DARE Lab — back to top">
-                <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+                <svg class="brand__mark" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
                     <defs>
                         <linearGradient id="markGradNav" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse">
                             <stop offset="0" stop-color="#3b82f6" />
@@ -152,8 +154,8 @@
 
             <div class="nav__actions">
                 <button class="icon-btn theme-toggle" id="themeBtn" type="button" aria-label="Switch between dark and light theme">
-                    <svg class="icon icon--moon"><use href="#i-moon" /></svg>
-                    <svg class="icon icon--sun"><use href="#i-sun" /></svg>
+                    <svg width="20" height="20" class="icon icon--moon"><use href="#i-moon" /></svg>
+                    <svg width="20" height="20" class="icon icon--sun"><use href="#i-sun" /></svg>
                 </button>
                 <a class="btn btn--primary btn--sm nav__cta" href="#join">Join the Lab</a>
                 <button class="icon-btn menu-toggle" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
@@ -175,8 +177,8 @@
             <a href="#join"><span>08</span>Join</a>
         </nav>
         <div class="drawer__foot">
-            <a href="mailto:dare.aviation@gmail.com"><svg class="icon icon--sm"><use href="#i-mail" /></svg>dare.aviation@gmail.com</a>
-            <a href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener"><svg class="icon icon--sm"><use href="#i-linkedin" /></svg>LinkedIn</a>
+            <a href="mailto:dare.aviation@gmail.com"><svg width="20" height="20" class="icon icon--sm"><use href="#i-mail" /></svg>dare.aviation@gmail.com</a>
+            <a href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener"><svg width="20" height="20" class="icon icon--sm"><use href="#i-linkedin" /></svg>LinkedIn</a>
         </div>
     </div>
 
@@ -189,32 +191,32 @@
             <div class="hero__bg" aria-hidden="true"></div>
             <div class="container hero__grid">
                 <div class="hero__copy">
-                    <a class="hero-badge" href="#outputs" data-reveal>
+                    <a class="hero-badge" href="#outputs">
                         <span class="hero-badge__tag">New</span>
                         <span class="hero-badge__text">Paper in Transportation Research Part C</span>
-                        <svg class="icon"><use href="#i-arrow-right" /></svg>
+                        <svg width="20" height="20" class="icon"><use href="#i-arrow-right" /></svg>
                     </a>
 
-                    <h1 class="hero__title" data-reveal>Decentralized <em>Aviation</em> Research &amp; Education Lab.</h1>
+                    <h1 class="hero__title">Decentralized <em>Aviation</em> Research &amp; Education Lab.</h1>
 
-                    <p class="hero__lede" data-reveal>
+                    <p class="hero__lede">
                         DARE Lab is a global, decentralized non-profit community of ambitious young and high-caliber
                         researchers dedicated to top-quality scientific outputs across the aviation ecosystem.
                     </p>
 
-                    <div class="hero__actions" data-reveal>
+                    <div class="hero__actions">
                         <a class="btn btn--primary" href="#about">
                             Explore the Laboratory
-                            <svg class="icon icon--arrow"><use href="#i-arrow-right" /></svg>
+                            <svg width="20" height="20" class="icon icon--arrow"><use href="#i-arrow-right" /></svg>
                         </a>
                         <a class="btn btn--ghost" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener">
-                            <svg class="icon"><use href="#i-linkedin" /></svg>
+                            <svg width="20" height="20" class="icon"><use href="#i-linkedin" /></svg>
                             Follow on LinkedIn
                         </a>
                     </div>
 
                     <!-- Update these numbers when the team changes -->
-                    <dl class="hero__stats" data-reveal>
+                    <dl class="hero__stats">
                         <div class="stat"><dt class="stat__label">Researchers</dt><dd class="stat__value" data-count="10">10</dd></div>
                         <div class="stat"><dt class="stat__label">Universities</dt><dd class="stat__value" data-count="7">7</dd></div>
                         <div class="stat"><dt class="stat__label">Countries</dt><dd class="stat__value" data-count="3">3</dd></div>
@@ -276,7 +278,7 @@
 
                 <div class="bento">
                     <article id="mission" class="card bento__feature" data-reveal>
-                        <svg class="feature-art" viewBox="0 0 300 300" aria-hidden="true">
+                        <svg class="feature-art" width="300" height="300" viewBox="0 0 300 300" aria-hidden="true">
                             <g fill="none" stroke="currentColor" stroke-width="1">
                                 <circle cx="150" cy="150" r="148" />
                                 <circle cx="150" cy="150" r="112" stroke-dasharray="2 6" />
@@ -304,7 +306,7 @@
                     </article>
 
                     <article class="card" data-reveal>
-                        <span class="card__icon"><svg class="icon"><use href="#i-network" /></svg></span>
+                        <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-network" /></svg></span>
                         <span class="eyebrow">Network Model</span>
                         <h3>Decentralized.</h3>
                         <p>Designed for flexibility and scale. Topic-driven working groups enable cross-pollination
@@ -312,7 +314,7 @@
                     </article>
 
                     <article class="card" data-reveal>
-                        <span class="card__icon"><svg class="icon"><use href="#i-shield" /></svg></span>
+                        <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-shield" /></svg></span>
                         <span class="eyebrow">Priority</span>
                         <h3>Quality-First.</h3>
                         <p>Rigorous standards in research design, methodological transparency, and reproducibility
@@ -320,7 +322,7 @@
                     </article>
 
                     <article class="card card--accent bento__wide" data-reveal>
-                        <svg class="route-art" viewBox="0 0 400 200" aria-hidden="true">
+                        <svg class="route-art" width="400" height="200" viewBox="0 0 400 200" aria-hidden="true">
                             <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
                                 <path d="M14 186C110 50 270 22 388 64" stroke-dasharray="3 8" />
                                 <path d="M80 196C168 96 280 84 392 128" stroke-dasharray="3 8" />
@@ -375,11 +377,11 @@
                                 <span class="tag">Education &amp; Community</span>
                                 <span class="member__role">Founder &amp; Co-Director</span>
                                 <h3 class="member__name">Kadir Dönmez</h3>
-                                <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Samsun University <span class="iata">SZF</span></span></p>
+                                <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>Samsun University <span class="iata">SZF</span></span></p>
                                 <p class="member__bio">Assoc. Prof. · Vice Dean at Faculty of Aeronautics and
                                     Astronautics. ATM researcher.</p>
                                 <div class="member__links">
-                                    <a class="link-chip" href="https://scholar.google.com/citations?user=vpywJdsAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                    <a class="link-chip" href="https://scholar.google.com/citations?user=vpywJdsAAAAJ" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                                 </div>
                             </div>
                         </article>
@@ -396,7 +398,7 @@
                                 <p class="member__bio">Lead – Data Science &amp; Optimization | Machine Learning +
                                     Operations Research | Building Next-Gen Decision Systems.</p>
                                 <div class="member__links">
-                                    <a class="link-chip" href="https://scholar.google.com/citations?user=7gkNRBYAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                    <a class="link-chip" href="https://scholar.google.com/citations?user=7gkNRBYAAAAJ" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                                 </div>
                             </div>
                         </article>
@@ -417,10 +419,10 @@
                             </div>
                             <span class="member__role">Principal Investigator</span>
                             <h3 class="member__name">Mustafa Özdemir</h3>
-                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>The University of Tokyo</span></p>
+                            <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>The University of Tokyo</span></p>
                             <p class="member__bio">Postdoctoral Researcher | PhD in ATM | Fulbright Alumnus.</p>
                             <div class="member__links">
-                                <a class="link-chip" href="https://scholar.google.dk/citations?user=NxffrX8AAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                <a class="link-chip" href="https://scholar.google.dk/citations?user=NxffrX8AAAAJ" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                             </div>
                         </article>
 
@@ -432,10 +434,10 @@
                             </div>
                             <span class="member__role">Principal Investigator</span>
                             <h3 class="member__name">Mahmut Bakır</h3>
-                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Samsun University</span></p>
+                            <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>Samsun University</span></p>
                             <p class="member__bio">Assoc. Prof. · Head of Aviation Management Department.</p>
                             <div class="member__links">
-                                <a class="link-chip" href="https://scholar.google.com/citations?user=OSSfn5wAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=OSSfn5wAAAAJ" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                             </div>
                         </article>
 
@@ -447,10 +449,10 @@
                             </div>
                             <span class="member__role">Principal Investigator</span>
                             <h3 class="member__name">Saqib Gulzar</h3>
-                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Colorado State University Pueblo</span></p>
+                            <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>Colorado State University Pueblo</span></p>
                             <p class="member__bio">Assistant Professor. Lead on Decision Support.</p>
                             <div class="member__links">
-                                <a class="link-chip" href="https://scholar.google.com/citations?user=DsVrc_EAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=DsVrc_EAAAAJ" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                             </div>
                         </article>
 
@@ -462,10 +464,10 @@
                             </div>
                             <span class="member__role">Principal Investigator</span>
                             <h3 class="member__name">Mohammad Rauf Sheikhi</h3>
-                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Samsun University</span></p>
+                            <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>Samsun University</span></p>
                             <p class="member__bio">Assistant Professor at Faculty of Aeronautics and Astronautics.</p>
                             <div class="member__links">
-                                <a class="link-chip" href="https://scholar.google.com/citations?user=1-56V6QAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=1-56V6QAAAAJ" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                             </div>
                         </article>
 
@@ -477,10 +479,10 @@
                             </div>
                             <span class="member__role">Principal Investigator</span>
                             <h3 class="member__name">Hakan Aygün</h3>
-                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Fırat University</span></p>
+                            <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>Fırat University</span></p>
                             <p class="member__bio">Assoc. Prof. · Energy-exergy, aviation fuels, emissions research.</p>
                             <div class="member__links">
-                                <a class="link-chip" href="https://scholar.google.com/citations?user=H0JvFHQAAAAJ" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=H0JvFHQAAAAJ" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                             </div>
                         </article>
 
@@ -492,10 +494,10 @@
                             </div>
                             <span class="member__role">Principal Investigator</span>
                             <h3 class="member__name">Gökhan Tanrıverdi</h3>
-                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Erzincan Binali Yıldırım University</span></p>
+                            <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>Erzincan Binali Yıldırım University</span></p>
                             <p class="member__bio">Assoc. Prof. · Aviation Management, Air Cargo, Strategic Decision-Making, Decarbonization.</p>
                             <div class="member__links">
-                                <a class="link-chip" href="https://scholar.google.com/citations?user=bZnDdcgAAAAJ&amp;hl=tr" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=bZnDdcgAAAAJ&amp;hl=tr" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                             </div>
                         </article>
 
@@ -507,10 +509,10 @@
                             </div>
                             <span class="member__role">Principal Investigator</span>
                             <h3 class="member__name">Ramazan Kürşat Çeçen</h3>
-                            <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Eskişehir Osmangazi University</span></p>
+                            <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>Eskişehir Osmangazi University</span></p>
                             <p class="member__bio">Assoc. Prof. · Optimization, Meta-Heuristic Algorithms, Air Traffic Flow Management, Aircraft Conflict Resolution.</p>
                             <div class="member__links">
-                                <a class="link-chip" href="https://scholar.google.com/citations?user=Kv9kgUwAAAAJ&amp;hl=tr" target="_blank" rel="noopener"><svg class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
+                                <a class="link-chip" href="https://scholar.google.com/citations?user=Kv9kgUwAAAAJ&amp;hl=tr" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-scholar" /></svg>Google Scholar</a>
                             </div>
                         </article>
                     </div>
@@ -526,9 +528,9 @@
                         <div class="member__identity">
                             <div class="avatar"><img src="photos/team/cem.jpg" alt="Cem Çetek" width="72" height="72" loading="lazy" decoding="async"></div>
                             <div>
-                                <span class="member__role member__role--honorary"><svg class="icon icon--xs"><use href="#i-award" /></svg>Honorary Member</span>
+                                <span class="member__role member__role--honorary"><svg width="20" height="20" class="icon icon--xs"><use href="#i-award" /></svg>Honorary Member</span>
                                 <h3 class="member__name">Cem Çetek</h3>
-                                <p class="member__affil"><svg class="icon"><use href="#i-pin" /></svg><span>Eskişehir Technical University <span class="iata">AOE</span></span></p>
+                                <p class="member__affil"><svg width="20" height="20" class="icon"><use href="#i-pin" /></svg><span>Eskişehir Technical University <span class="iata">AOE</span></span></p>
                             </div>
                         </div>
                         <div class="member__details">
@@ -536,7 +538,7 @@
                                 Management, Fast-time Modeling and Simulation, Airport Capacity and Flow Management,
                                 Aircraft Performance, Air Traffic Conflict Resolution.</p>
                             <div class="member__links">
-                                <a class="link-chip" href="mailto:ccetek@eskisehir.edu.tr"><svg class="icon"><use href="#i-mail" /></svg>ccetek@eskisehir.edu.tr</a>
+                                <a class="link-chip" href="mailto:ccetek@eskisehir.edu.tr"><svg width="20" height="20" class="icon"><use href="#i-mail" /></svg>ccetek@eskisehir.edu.tr</a>
                             </div>
                         </div>
                     </article>
@@ -560,45 +562,45 @@
 
                 <div class="wg-grid">
                     <article class="card wg" data-reveal>
-                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-radar" /></svg></span><span class="wg__num">WG · 01</span></div>
+                        <div class="wg__top"><span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-radar" /></svg></span><span class="wg__num">WG · 01</span></div>
                         <h3>Air Transport &amp; ATM</h3>
                         <p>Network planning, capacity balancing, and global trajectory operations.</p>
                     </article>
 
                     <article class="card wg wg--wip" data-reveal>
-                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-runway" /></svg></span><span class="wg__num">WG · 02</span></div>
+                        <div class="wg__top"><span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-runway" /></svg></span><span class="wg__num">WG · 02</span></div>
                         <h3>Surface &amp; Airline Ops</h3>
                         <p>Gate, taxi, and runway integration combined with airline recovery strategies.</p>
                         <span class="tag tag--warn wg__status"><span class="tag__dot"></span>Work in progress</span>
                     </article>
 
                     <article class="card wg" data-reveal>
-                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-safety" /></svg></span><span class="wg__num">WG · 03</span></div>
+                        <div class="wg__top"><span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-safety" /></svg></span><span class="wg__num">WG · 03</span></div>
                         <h3>Safety &amp; Human Factors</h3>
                         <p>Operational risk management and human-AI teaming in complex systems.</p>
                     </article>
 
                     <article class="card wg wg--wip" data-reveal>
-                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-leaf" /></svg></span><span class="wg__num">WG · 04</span></div>
+                        <div class="wg__top"><span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-leaf" /></svg></span><span class="wg__num">WG · 04</span></div>
                         <h3>Sustainability</h3>
                         <p>Fuel and emissions-aware operations and green aviation pathways.</p>
                         <span class="tag tag--warn wg__status"><span class="tag__dot"></span>Work in progress</span>
                     </article>
 
                     <article class="card wg" data-reveal>
-                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-cpu" /></svg></span><span class="wg__num">WG · 05</span></div>
+                        <div class="wg__top"><span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-cpu" /></svg></span><span class="wg__num">WG · 05</span></div>
                         <h3>Data Science &amp; AI</h3>
                         <p>Decision support, machine learning pipelines, and digital twin frameworks.</p>
                     </article>
 
                     <article class="card wg" data-reveal>
-                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-book-open" /></svg></span><span class="wg__num">WG · 06</span></div>
+                        <div class="wg__top"><span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-book-open" /></svg></span><span class="wg__num">WG · 06</span></div>
                         <h3>Education</h3>
                         <p>Monthly clinics, webinars, and mentorship for research maturity.</p>
                     </article>
 
                     <article class="card wg wg--wip" data-reveal>
-                        <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-drone" /></svg></span><span class="wg__num">WG · 07</span></div>
+                        <div class="wg__top"><span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-drone" /></svg></span><span class="wg__num">WG · 07</span></div>
                         <h3>Urban Air Mobility</h3>
                         <p>Advanced air mobility, eVTOL operations, and UAM traffic management integration.</p>
                         <span class="tag tag--warn wg__status"><span class="tag__dot"></span>Work in progress</span>
@@ -606,11 +608,11 @@
 
                     <a class="card wg wg--cta" href="#join" data-reveal>
                         <div>
-                            <div class="wg__top"><span class="card__icon"><svg class="icon"><use href="#i-plus" /></svg></span></div>
+                            <div class="wg__top"><span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-plus" /></svg></span></div>
                             <h3>Propose a group</h3>
                             <p>Have a research direction in mind? Tell us about it in your membership application.</p>
                         </div>
-                        <span class="text-link">Join the Lab <svg class="icon icon--sm"><use href="#i-arrow-right" /></svg></span>
+                        <span class="text-link">Join the Lab <svg width="20" height="20" class="icon icon--sm"><use href="#i-arrow-right" /></svg></span>
                     </a>
                 </div>
             </div>
@@ -632,7 +634,7 @@
                     <!-- Publications -->
                     <article class="card" data-reveal>
                         <div class="output-head">
-                            <span class="card__icon"><svg class="icon"><use href="#i-doc" /></svg></span>
+                            <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-doc" /></svg></span>
                             <div>
                                 <span class="eyebrow">Journals</span>
                                 <h3>Publications</h3>
@@ -651,8 +653,8 @@
                                 <p class="pub__authors">Dönmez, K., Ali, H., Pham, D.-T., &amp; Alam, S.</p>
                                 <p class="pub__details"><em>Transportation Research Part C: Emerging Technologies, 194(Part A)</em>, Article 105990</p>
                                 <div class="pub__actions">
-                                    <a class="btn btn--ghost btn--xs" href="https://doi.org/10.1016/j.trc.2026.105990" target="_blank" rel="noopener">doi.org/10.1016/j.trc.2026.105990 <svg class="icon"><use href="#i-arrow-up-right" /></svg></a>
-                                    <button class="btn btn--ghost btn--xs" type="button" data-cite="Dönmez, K., Ali, H., Pham, D.-T., &amp; Alam, S. (2027). Scenario-robust gate assignment with real-time surface scheduling: A generalizable two-stage framework for uncertainty-aware airside operations. Transportation Research Part C: Emerging Technologies, 194(Part A), Article 105990. https://doi.org/10.1016/j.trc.2026.105990"><svg class="icon"><use href="#i-copy" /></svg><span>Copy APA</span></button>
+                                    <a class="btn btn--ghost btn--xs" href="https://doi.org/10.1016/j.trc.2026.105990" target="_blank" rel="noopener">doi.org/10.1016/j.trc.2026.105990 <svg width="20" height="20" class="icon"><use href="#i-arrow-up-right" /></svg></a>
+                                    <button class="btn btn--ghost btn--xs" type="button" data-cite="Dönmez, K., Ali, H., Pham, D.-T., &amp; Alam, S. (2027). Scenario-robust gate assignment with real-time surface scheduling: A generalizable two-stage framework for uncertainty-aware airside operations. Transportation Research Part C: Emerging Technologies, 194(Part A), Article 105990. https://doi.org/10.1016/j.trc.2026.105990"><svg width="20" height="20" class="icon"><use href="#i-copy" /></svg><span>Copy APA</span></button>
                                 </div>
                             </li>
                             <li class="pub">
@@ -665,8 +667,8 @@
                                 <p class="pub__authors">Dönmez, K., Ali, H., Gulzar, S., &amp; Alam, S.</p>
                                 <p class="pub__details"><em>Transportation Research Interdisciplinary Perspectives, 39</em>, Article 102206</p>
                                 <div class="pub__actions">
-                                    <a class="btn btn--ghost btn--xs" href="https://doi.org/10.1016/j.trip.2026.102206" target="_blank" rel="noopener">doi.org/10.1016/j.trip.2026.102206 <svg class="icon"><use href="#i-arrow-up-right" /></svg></a>
-                                    <button class="btn btn--ghost btn--xs" type="button" data-cite="Dönmez, K., Ali, H., Gulzar, S., &amp; Alam, S. (2026). Policy-based Bayesian-MILP optimization framework for airport departure sequencing under uncertainty. Transportation Research Interdisciplinary Perspectives, 39, Article 102206. https://doi.org/10.1016/j.trip.2026.102206"><svg class="icon"><use href="#i-copy" /></svg><span>Copy APA</span></button>
+                                    <a class="btn btn--ghost btn--xs" href="https://doi.org/10.1016/j.trip.2026.102206" target="_blank" rel="noopener">doi.org/10.1016/j.trip.2026.102206 <svg width="20" height="20" class="icon"><use href="#i-arrow-up-right" /></svg></a>
+                                    <button class="btn btn--ghost btn--xs" type="button" data-cite="Dönmez, K., Ali, H., Gulzar, S., &amp; Alam, S. (2026). Policy-based Bayesian-MILP optimization framework for airport departure sequencing under uncertainty. Transportation Research Interdisciplinary Perspectives, 39, Article 102206. https://doi.org/10.1016/j.trip.2026.102206"><svg width="20" height="20" class="icon"><use href="#i-copy" /></svg><span>Copy APA</span></button>
                                 </div>
                             </li>
                         </ol>
@@ -676,7 +678,7 @@
                         <!-- Projects -->
                         <article class="card" data-reveal>
                             <div class="output-head">
-                                <span class="card__icon"><svg class="icon"><use href="#i-flask" /></svg></span>
+                                <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-flask" /></svg></span>
                                 <div>
                                     <span class="eyebrow">Industry</span>
                                     <h3>Projects</h3>
@@ -690,14 +692,14 @@
                                     <li>Dr. Mustafa ÖZDEMİR <span>· Project Coordinator</span></li>
                                     <li>Assoc. Prof. Dr. Kadir Dönmez <span>· Project Expert</span></li>
                                 </ul>
-                                <a class="text-link" href="https://4000.tubitak.gov.tr/4004/225b949" target="_blank" rel="noopener">View project page <svg class="icon icon--sm"><use href="#i-arrow-up-right" /></svg></a>
+                                <a class="text-link" href="https://4000.tubitak.gov.tr/4004/225b949" target="_blank" rel="noopener">View project page <svg width="20" height="20" class="icon icon--sm"><use href="#i-arrow-up-right" /></svg></a>
                             </div>
                         </article>
 
                         <!-- Books -->
                         <article class="card" data-reveal>
                             <div class="output-head">
-                                <span class="card__icon"><svg class="icon"><use href="#i-book" /></svg></span>
+                                <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-book" /></svg></span>
                                 <div>
                                     <span class="eyebrow">Academia</span>
                                     <h3>Books</h3>
@@ -722,8 +724,8 @@
                         <h2>Latest Updates</h2>
                     </div>
                     <div class="updates-controls">
-                        <button class="icon-btn slider-btn" type="button" data-updates-direction="previous" aria-label="Previous updates"><svg class="icon"><use href="#i-arrow-left" /></svg></button>
-                        <button class="icon-btn slider-btn" type="button" data-updates-direction="next" aria-label="Next updates"><svg class="icon"><use href="#i-arrow-right" /></svg></button>
+                        <button class="icon-btn slider-btn" type="button" data-updates-direction="previous" aria-label="Previous updates"><svg width="20" height="20" class="icon"><use href="#i-arrow-left" /></svg></button>
+                        <button class="icon-btn slider-btn" type="button" data-updates-direction="next" aria-label="Next updates"><svg width="20" height="20" class="icon"><use href="#i-arrow-right" /></svg></button>
                     </div>
                 </header>
 
@@ -743,7 +745,7 @@
                 </div>
 
                 <div class="updates-foot" data-reveal>
-                    <a class="btn btn--ghost btn--sm" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener"><svg class="icon"><use href="#i-linkedin" /></svg>See all posts on LinkedIn</a>
+                    <a class="btn btn--ghost btn--sm" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener"><svg width="20" height="20" class="icon"><use href="#i-linkedin" /></svg>See all posts on LinkedIn</a>
                 </div>
             </div>
         </section>
@@ -765,7 +767,7 @@
                         <span class="eyebrow eyebrow--accent">Quality &amp; Policies</span>
                         <ul class="gov-list">
                             <li class="gov-item">
-                                <span class="card__icon"><svg class="icon"><use href="#i-check-circle" /></svg></span>
+                                <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-check-circle" /></svg></span>
                                 <div>
                                     <h3>Internal Quality Gate</h3>
                                     <p>All outputs undergo rigorous internal review for method rigor and clarity before
@@ -773,7 +775,7 @@
                                 </div>
                             </li>
                             <li class="gov-item">
-                                <span class="card__icon"><svg class="icon"><use href="#i-pen" /></svg></span>
+                                <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-pen" /></svg></span>
                                 <div>
                                     <h3>Authorship &amp; Ethics</h3>
                                     <p>Fair credit based on substantial intellectual contribution and ethical data
@@ -787,14 +789,14 @@
                         <span class="eyebrow eyebrow--accent">Programs</span>
                         <ul class="gov-list">
                             <li class="gov-item">
-                                <span class="card__icon"><svg class="icon"><use href="#i-video" /></svg></span>
+                                <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-video" /></svg></span>
                                 <div>
                                     <h3>Monthly Webinars</h3>
                                     <p>Guest speakers, clinics, and internal talks on the latest research.</p>
                                 </div>
                             </li>
                             <li class="gov-item">
-                                <span class="card__icon"><svg class="icon"><use href="#i-users" /></svg></span>
+                                <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-users" /></svg></span>
                                 <div>
                                     <h3>Mentoring</h3>
                                     <p>Support for early-career researchers and proposal writing.</p>
@@ -816,12 +818,12 @@
                         <span class="eyebrow"><span class="eyebrow__num">07</span>Ethics &amp; Legal Framework</span>
                         <h2>Scientific Protocol</h2>
                     </div>
-                    <a class="text-link" href="policies.html">Read the full policies <svg class="icon icon--sm"><use href="#i-arrow-right" /></svg></a>
+                    <a class="text-link" href="policies.html">Read the full policies <svg width="20" height="20" class="icon icon--sm"><use href="#i-arrow-right" /></svg></a>
                 </header>
 
                 <div class="protocol-grid">
                     <article class="card" data-reveal>
-                        <span class="card__icon"><svg class="icon"><use href="#i-scale" /></svg></span>
+                        <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-scale" /></svg></span>
                         <span class="eyebrow">Legal Disclaimer</span>
                         <h3>Institutional Independence.</h3>
                         <p>DARE Lab is a decentralized research collective. Institutional affiliations of members are
@@ -832,7 +834,7 @@
                     </article>
 
                     <article class="card" data-reveal>
-                        <span class="card__icon"><svg class="icon"><use href="#i-book-open" /></svg></span>
+                        <span class="card__icon"><svg width="20" height="20" class="icon"><use href="#i-book-open" /></svg></span>
                         <span class="eyebrow">Ethical Code</span>
                         <h3>COPE Guidelines.</h3>
                         <p>We adhere to the Committee on Publication Ethics (COPE) guidelines. Our members commit to
@@ -840,7 +842,7 @@
                             all scholarly activities.</p>
 
                         <div class="callout">
-                            <h4><svg class="icon icon--sm"><use href="#i-alert" /></svg>Limited Liability</h4>
+                            <h4><svg width="20" height="20" class="icon icon--sm"><use href="#i-alert" /></svg>Limited Liability</h4>
                             <p>The DARE Lab provides a collaborative platform for academic exchange. Under no
                                 circumstances shall the Lab or its founders be held liable for any direct, indirect, or
                                 consequential damages arising from the use or interpretation of the research outputs or
@@ -883,7 +885,7 @@
                         </li>
                     </ol>
 
-                    <a class="text-link" href="policies.html">Participation Agreement &amp; Policies <svg class="icon icon--sm"><use href="#i-arrow-right" /></svg></a>
+                    <a class="text-link" href="policies.html">Participation Agreement &amp; Policies <svg width="20" height="20" class="icon icon--sm"><use href="#i-arrow-right" /></svg></a>
                 </div>
 
                 <div class="card form-card" data-reveal>
@@ -918,7 +920,7 @@
 
                         <button class="btn btn--primary btn--block" type="submit">
                             Submit Membership Interest
-                            <svg class="icon icon--arrow"><use href="#i-arrow-right" /></svg>
+                            <svg width="20" height="20" class="icon icon--arrow"><use href="#i-arrow-right" /></svg>
                         </button>
                     </form>
                 </div>
@@ -934,7 +936,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <a class="brand" href="#top" aria-label="DARE Lab — back to top">
-                        <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+                        <svg class="brand__mark" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
                             <defs>
                                 <linearGradient id="markGradFooter" x1="4" y1="28" x2="28" y2="4" gradientUnits="userSpaceOnUse">
                                     <stop offset="0" stop-color="#3b82f6" />
@@ -951,8 +953,8 @@
                     <p>Decentralized Aviation Research &amp; Education Lab — a global, non-profit network of aviation
                         researchers.</p>
                     <div class="footer-social">
-                        <a class="icon-btn" href="mailto:dare.aviation@gmail.com" aria-label="Email DARE Lab"><svg class="icon icon--sm"><use href="#i-mail" /></svg></a>
-                        <a class="icon-btn" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener" aria-label="DARE Lab on LinkedIn"><svg class="icon icon--sm"><use href="#i-linkedin" /></svg></a>
+                        <a class="icon-btn" href="mailto:dare.aviation@gmail.com" aria-label="Email DARE Lab"><svg width="20" height="20" class="icon icon--sm"><use href="#i-mail" /></svg></a>
+                        <a class="icon-btn" href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener" aria-label="DARE Lab on LinkedIn"><svg width="20" height="20" class="icon icon--sm"><use href="#i-linkedin" /></svg></a>
                     </div>
                 </div>
 
@@ -980,7 +982,7 @@
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="mailto:dare.aviation@gmail.com">dare.aviation@gmail.com</a></li>
-                        <li><a href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener">LinkedIn <svg class="icon icon--xs"><use href="#i-arrow-up-right" /></svg></a></li>
+                        <li><a href="https://www.linkedin.com/company/decentralized-aviation-research-education-lab" target="_blank" rel="noopener">LinkedIn <svg width="20" height="20" class="icon icon--xs"><use href="#i-arrow-up-right" /></svg></a></li>
                         <li><a href="#join">Join the Lab</a></li>
                     </ul>
                 </div>
@@ -990,13 +992,13 @@
 
             <div class="footer-bottom">
                 <p>© <span id="year">2024</span> Decentralized Aviation Research &amp; Education Lab (Non-Profit).</p>
-                <a href="#top">Back to top <svg class="icon icon--xs"><use href="#i-arrow-up" /></svg></a>
+                <a href="#top">Back to top <svg width="20" height="20" class="icon icon--xs"><use href="#i-arrow-up" /></svg></a>
             </div>
         </div>
     </footer>
 
-    <script src="js/globe.js" defer></script>
-    <script src="js/main.js" defer></script>
+    <script src="js/globe.js?v=20261026-2" defer></script>
+    <script src="js/main.js?v=20261026-2" defer></script>
 </body>
 
 </html>
