@@ -2,7 +2,8 @@
  * DARE Lab — member network globe
  * ------------------------------------------------------------------
  * Renders a dotted Earth with the lab's member locations (labelled by
- * the nearest airport's IATA code) connected by animated great-circle
+ * airport IATA codes, or a country code when only the country is known)
+ * connected by animated great-circle
  * links. Dependency-free, retina-aware, pauses when off-screen and
  * respects `prefers-reduced-motion`.
  *
@@ -21,21 +22,25 @@
   var TAU = Math.PI * 2;
 
   /* ---------------------------------------------------------------
-   * Member locations (nearest airport, IATA)
+   * Member locations (airport IATA codes; CN is a country-level marker)
    * ------------------------------------------------------------- */
   var NODES = [
     { code: 'SZF', city: 'Samsun',    lat: 41.29, lon: 36.33,   lx: -10, ly: -34, align: 'right' },
     { code: 'AOE', city: 'Eskişehir', lat: 39.78, lon: 30.52,   lx: -36, ly: 2,   align: 'right' },
     { code: 'ERC', city: 'Erzincan',  lat: 39.75, lon: 39.49,   lx: 34,  ly: -20, align: 'left' },
     { code: 'EZS', city: 'Elazığ',    lat: 38.68, lon: 39.22,   lx: 34,  ly: 20,  align: 'left' },
-    { code: 'HND', city: 'Tokyo',     lat: 35.71, lon: 139.76,  lx: 28,  ly: -22, align: 'left' },
+    { code: 'BCN', city: 'Barcelona', lat: 41.39, lon: 2.17,    lx: -28, ly: -28, align: 'right' },
+    { code: 'MEL', city: 'Melbourne', lat: -37.81, lon: 144.96, lx: 24,  ly: 22,  align: 'left' },
+    // Approximate country-level position: no city or employer is specified.
+    { code: 'CN', city: 'China', label: 'CHINA (APPROX.)', lat: 35.0, lon: 104.0, lx: 28, ly: -22, align: 'left' },
     { code: 'PUB', city: 'Pueblo',    lat: 38.25, lon: -104.61, lx: -28, ly: -22, align: 'right' }
   ];
 
   var LINKS = [
     ['AOE', 'SZF'], ['SZF', 'ERC'], ['EZS', 'AOE'],
-    ['SZF', 'HND'], ['AOE', 'PUB'], ['HND', 'PUB'],
-    ['EZS', 'HND'], ['SZF', 'PUB']
+    ['SZF', 'BCN'], ['AOE', 'PUB'], ['BCN', 'PUB'],
+    ['EZS', 'BCN'], ['SZF', 'PUB'], ['SZF', 'CN'],
+    ['CN', 'MEL'], ['BCN', 'MEL']
   ];
 
   /* ---------------------------------------------------------------
@@ -77,7 +82,9 @@
   NODES.forEach(function (n, i) {
     n.v = toVec(n.lat, n.lon);
     n.phase = (i * 0.37) % 1;
-    try { n.label = n.city.toLocaleUpperCase('tr-TR'); } catch (e) { n.label = n.city.toUpperCase(); }
+    if (!n.label) {
+      try { n.label = n.city.toLocaleUpperCase('tr-TR'); } catch (e) { n.label = n.city.toUpperCase(); }
+    }
     nodeByCode[n.code] = n;
   });
 

@@ -1642,6 +1642,12 @@ textarea {
     color: var(--text-muted);
 }
 
+.pub__authors strong,
+.project__people strong {
+    color: var(--text);
+    font-weight: 700;
+}
+
 .project__people span {
     color: var(--text-dim);
 }
