@@ -1352,6 +1352,13 @@ textarea {
     height: 15px;
 }
 
+.member__links a[href^="mailto:"] {
+    font-size: 0.68rem;
+    font-weight: 500;
+    gap: 6px;
+    padding-inline: 10px;
+}
+
 .member__email {
     flex-basis: 100%;
     min-width: 0;
