@@ -22,7 +22,7 @@
   var TAU = Math.PI * 2;
 
   /* ---------------------------------------------------------------
-   * Member locations (airport IATA codes; CN is a country-level marker)
+   * Member locations (nearest airport, IATA)
    * ------------------------------------------------------------- */
   var NODES = [
     { code: 'SZF', city: 'Samsun',    lat: 41.29, lon: 36.33,   lx: -10, ly: -34, align: 'right' },
@@ -31,16 +31,15 @@
     { code: 'EZS', city: 'Elazığ',    lat: 38.68, lon: 39.22,   lx: 34,  ly: 20,  align: 'left' },
     { code: 'BCN', city: 'Barcelona', lat: 41.39, lon: 2.17,    lx: -28, ly: -28, align: 'right' },
     { code: 'MEL', city: 'Melbourne', lat: -37.81, lon: 144.96, lx: 24,  ly: 22,  align: 'left' },
-    // Approximate country-level position: no city or employer is specified.
-    { code: 'CN', city: 'China', label: 'CHINA (APPROX.)', lat: 35.0, lon: 104.0, lx: 28, ly: -22, align: 'left' },
+    { code: 'XIY', city: "Xi'an", label: "XI'AN", lat: 34.25, lon: 108.98, lx: 28, ly: -22, align: 'left' },
     { code: 'PUB', city: 'Pueblo',    lat: 38.25, lon: -104.61, lx: -28, ly: -22, align: 'right' }
   ];
 
   var LINKS = [
     ['AOE', 'SZF'], ['SZF', 'ERC'], ['EZS', 'AOE'],
     ['SZF', 'BCN'], ['AOE', 'PUB'], ['BCN', 'PUB'],
-    ['EZS', 'BCN'], ['SZF', 'PUB'], ['SZF', 'CN'],
-    ['CN', 'MEL'], ['BCN', 'MEL']
+    ['EZS', 'BCN'], ['SZF', 'PUB'], ['SZF', 'XIY'],
+    ['XIY', 'MEL'], ['BCN', 'MEL']
   ];
 
   /* ---------------------------------------------------------------
