@@ -1359,6 +1359,12 @@ textarea {
     padding-inline: 10px;
 }
 
+.member__links a.member__email--long {
+    font-size: 0.62rem;
+    gap: 5px;
+    padding-inline: 8px;
+}
+
 .member__email {
     flex-basis: 100%;
     min-width: 0;
